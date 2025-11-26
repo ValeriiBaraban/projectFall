@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
        const checkingFieldEmailBoolean = checkingFieldEmail();
        const checkingFieldMessageBoolean = checkingFieldMessage();
        if((checkingFieldNameBoolean && checkingFieldEmailBoolean && checkingFieldMessageBoolean)) {
-                    window.location.href = 'page-main.html';
+                    window.location.href = './site/page-main.html';
        };
 
     });
