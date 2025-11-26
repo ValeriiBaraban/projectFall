@@ -167,9 +167,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const submit = document.querySelector('.btn-primary');
     submit.addEventListener('click', function(e) {
         e.preventDefault();
-       checkingFieldName();
-       checkingFieldEmail();
-       checkingFieldMessage();
+        // Run all validation functions/ consts received true or false
+       const checkingFieldNameBoolean = checkingFieldName();
+       const checkingFieldEmailBoolean = checkingFieldEmail();
+       const checkingFieldMessageBoolean = checkingFieldMessage();
+       if((checkingFieldNameBoolean && checkingFieldEmailBoolean && checkingFieldMessageBoolean)) {
+                    window.location.href = 'page-main.html';
+       };
+
     });
 
     
