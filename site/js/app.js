@@ -184,7 +184,10 @@
 //import { API_KEY } from '././api-key.js';
 const API_KEY = window.API_KEY
 
-const BASEURL = 'api.weatherapi.com/v1'
+
+const BASEURL = 'https://api.weatherapi.com/v1';
+
+//const BASEURL = 'api.weatherapi.com/v1'
 const typeData = 'current.json';
 const query = 'London';
 const aqi = 'no';
