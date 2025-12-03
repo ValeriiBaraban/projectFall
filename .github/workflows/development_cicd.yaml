@@ -9,6 +9,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: create config.js for api
+        run: |
+            echo "window.secret = { key: '${{ secrets.API_KEY }}' };" > site/js/config.js
+
       - name: Checkout repo
         uses: actions/checkout@v4
 
