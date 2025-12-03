@@ -181,9 +181,6 @@
 
 // });
 
-//import { API_KEY } from '././api-key.js';
-const API_KEY = window.API_KEY
-
 
 const BASEURL = 'https://api.weatherapi.com/v1';
 
@@ -194,7 +191,6 @@ const aqi = 'no';
 const url = `http://${BASEURL}/${typeData}?key=${API_KEY}&q=${query}&aqi=${aqi}`;
 //
 
-http://api.weatherapi.com/v1/current.json?key=2af6c3f2f1404973ac6194831250312&q=London&aqi=yes
 
 // Fetch bestselling books for date and add top 5 to page
   fetch(url)
