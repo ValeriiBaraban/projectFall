@@ -9,8 +9,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Debug
+        run: pwd
+
+      - name: path
+        run: ls -a
+
       - name: create config.js for api
         run: |
+            mkdir -p site/js
             echo "window.secret = { key: '${{ secrets.API_KEY }}' };" > /js/config.js
 
       - name: Checkout repo
