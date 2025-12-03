@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
       - name: Debug
         run: pwd
 
@@ -18,10 +21,9 @@ jobs:
       - name: create config.js for api
         run: |
             mkdir -p site/js
-            echo "window.secret = { key: '${{ secrets.API_KEY }}' };" > /js/config.js
+            echo "window.secret = { key: '${{ secrets.API_KEY }}' };" > site/js/config.js
 
-      - name: Checkout repo
-        uses: actions/checkout@v4
+      
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
