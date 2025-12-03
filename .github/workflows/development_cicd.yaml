@@ -21,7 +21,11 @@ jobs:
       # - name: create config.js for api
       #   run: |
       #       mkdir -p site/js
-      #       echo "window.secret = { key: '${{ secrets.API_KEY }}' };" > site/js/config.js
+      #         cat << EOF > site/js/config.js
+      #             window.secret = {
+      #               key: '${{ secrets.API_KEY }}'
+      #             };
+      #             EOF
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
