@@ -23,8 +23,6 @@ jobs:
             mkdir -p site/js
             echo "window.secret = { key: '${{ secrets.API_KEY }}' };" > site/js/config.js
 
-      
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
