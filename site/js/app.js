@@ -185,14 +185,13 @@ TODO//fetch geolocation by city name.
 //https://api.open-meteo.com/v1/forecast?latitude=51.5072&longitude=-0.1276&current_weather=true
 
 
-const BASEURL = 'https://api.open-meteo.com/v1';
+const BASEURL = 'https://api.open-meteo.com/v1/forecast';
 
 //const BASEURL = 'api.weatherapi.com/v1'
-const typeData = 'forecast';
 const latitude =  51.507;
 const longitude = -0.1276;
 const current_weather = true;
-const url = `http://${BASEURL}/${typeData}?latitude=${latitude}&longitude=${longitude}&current_weather=${current_weather}`;
+const url = `http://${BASEURL}?latitude=${latitude}&longitude=${longitude}&current_weather=${current_weather}`;
 //
 
 
