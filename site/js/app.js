@@ -188,7 +188,7 @@ const BASEURL = 'https://api.weatherapi.com/v1';
 const typeData = 'current.json';
 const query = 'London';
 const aqi = 'no';
-const url = `http://${BASEURL}/${typeData}?key=${API_KEY}&q=${query}&aqi=${aqi}`;
+const url = `http://${BASEURL}/${typeData}?key=${f7c046ac01e344cbb8c232500250312}&q=${query}&aqi=${aqi}`;
 //
 
 
