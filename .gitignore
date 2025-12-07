@@ -1,5 +1,8 @@
 var.tf
-api-key.js
+api-key.txt
+index_app.js
+app.js.back
+index.py
 .terraform.lock.hcl
 .terraform/
 terraform.tfstate

@@ -200,3 +200,67 @@ resource "aws_route53_record" "www_a" {
     evaluate_target_health = false
   }
 }
+//lambda
+
+# data "aws_iam_policy_document" "lambda_secretsmanager_policy" {
+#   statement {
+#     effect = "Allow"
+
+#     actions = [
+#       "secretsmanager:GetSecretValue"
+#     ]
+
+#     resources = [
+#       aws_secretsmanager_secret.api_secret.arn
+#     ]
+#   }
+# }
+# resource "aws_iam_role" "lambda_role" {
+#   name = "lambda-secretsmanager-role"
+
+#   assume_role_policy = data.aws_iam_policy_document.lambda_trust.json
+# }
+
+# data "aws_iam_policy_document" "lambda_trust" {
+#   statement {
+#     effect = "Allow"
+
+#     principals {
+#       type        = "Service"
+#       identifiers = ["lambda.amazonaws.com"]
+#     }
+
+#     actions = ["sts:AssumeRole"]
+#   }
+# }
+# # resource "aws_iam_policy" "lambda_secretsmanager" {
+# #   name        = "lambda-secretsmanager"
+# #   description = "Allow Lambda to read secret"
+# #   policy      = data.aws_iam_policy_document.lambda_secretsmanager_policy.json
+# # }
+
+# # resource "aws_iam_role_policy_attachment" "lambda_attach" {
+# #   role       = aws_iam_role.lambda_role.name
+# #   policy_arn = aws_iam_policy.lambda_secretsmanager.arn
+# # }
+
+# # //secret_manager
+# # resource "aws_secretsmanager_secret" "api_secret" {
+# #   name = "api-key"
+# #   description = "key for projectfall"
+# # }
+
+# # resource "aws_secretsmanager_secret_version" "api_secret_value" {
+# #   secret_id     = aws_secretsmanager_secret.api_secret.id
+# #   secret_string = jsonencode({
+# #     API_KEY = trimspace(file(var.api_key_file))})
+# # }
+
+# # resource "aws_lambda_function" "my_lambda" {
+# #   function_name = "my-lambda"
+# #   role          = aws_iam_role.lambda_role.arn
+# #   handler       = "page-main.html"//"index.handler"  
+# #   runtime       = "nodejs18.x"
+
+# #   filename = "lambda.zip"
+# # }
