@@ -1,12 +1,20 @@
+//TODOOne or more Classes (must use static methods and/or prototype methods)
+//TODO Write testable code, use Jasmine unit tests
+//TODO One or more timing functions
+//TODO One or more fetch requests to a 3rd party API
+//TODO Sets, updates, or changes local storage
+//TODO Contains form fields, validates those fields
+
 function sessionStorage() {
   const data = sessionStorage.getItem('page-main.html');
   
-
-
 };
+
+
+//TODO add 12 hours format
 function getTime() {
   const date = new Date();
-  return [date.getHours(), date.getMinutes()];
+  return [date.getHours(), String(date.getMinutes()).padStart(2, '0')];
 } 
 
 
@@ -88,9 +96,11 @@ const response = (newCity.getWeather())
   };
 
   addTime() {
+
       const lastUpdated = document.createElement('h4');
       const formattingText = `${this.lastUpdated[0]} : ${this.lastUpdated[1]}`;
       lastUpdated.textContent = `Last updated at: ${formattingText}`;
+      lastUpdated.classList = 'updated-time';
       this.#selector.appendChild(lastUpdated);
       return [lastUpdated]  
   }
@@ -113,7 +123,10 @@ const response = (newCity.getWeather())
         const country = document.createElement('h2');
         const city = document.createElement('h3');
 
+        country.classList = 'country';
         country.textContent = this.country;
+
+        city.classList = 'city';
         city.textContent = `Current weather in ${this.cityName}:`;
 
         this.#selector.appendChild(country);
