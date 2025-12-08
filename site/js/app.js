@@ -63,27 +63,28 @@ class Geolocation {
 // }
 // look(newCity.getWeather());
 const dataNow = getTime();
-
 const selectedCity = 'Shoreline'
 const newCity = new Geolocation(selectedCity);
 const response = (newCity.getWeather())
   .then(function(data) {
-    const currentWheater = new CurrentWheater(data, selectedCity, dataNow)
-    ;
+    const currentWheater = new localStorageForHistory(data, selectedCity);
     // currentWheater.addLocation();
     // currentWheater.addTemp();
     // currentWheater.addConditions();
     currentWheater.fetchAll();
+    currentWheater.addLocalStorage();
+
 
   });
-
+  
   class CurrentWheater {
-  constructor(response, cityName, dataNow) {
+  constructor(response, cityName) {
     this.temperatureCelsius = response.current.temperature_2m;
     this.temperatureFahrenheit = this.#CToF(this.temperatureCelsius);
     this.cityName = cityName;
     this.country = response.country;
-    this.lastUpdated = dataNow;
+    this.lastUpdated = getTime();//dataNow;
+
     // this.condition = response.current.condition;//text,icon,code
     this.humidity = response.current.relative_humidity_2m;
     // this.windDir = response.current.wind_dir;
@@ -96,13 +97,13 @@ const response = (newCity.getWeather())
   };
 
   addTime() {
-
       const lastUpdated = document.createElement('h4');
-      const formattingText = `${this.lastUpdated[0]} : ${this.lastUpdated[1]}`;
-      lastUpdated.textContent = `Last updated at: ${formattingText}`;
+      const formattingTime = `${this.lastUpdated[0]} : ${this.lastUpdated[1]}`;
+      lastUpdated.textContent = `Last updated at: ${formattingTime}`;
       lastUpdated.classList = 'updated-time';
       this.#selector.appendChild(lastUpdated);
-      return [lastUpdated]  
+
+      return lastUpdated;
   }
 
   addTemp() {
@@ -157,10 +158,31 @@ const response = (newCity.getWeather())
     fetchAll() {
         this.addLocation();
         this.addTime();
-
         this.addTemp();
         this.addConditions();
     }
 };
 
+class localStorageForHistory extends CurrentWheater {
+  constructor(response, cityName) {
+    super(response, cityName);
+  }
 
+  addLocalStorage() {
+    const historicalTime = JSON.parse(localStorage.getItem('WheaterHistory'));
+    historicalTime.push({
+//TODO norm format this
+//TODO add autoupdater
+      'city': this.cityName,
+      'time': `${this.lastUpdated[0]}:${this.lastUpdated[1]}`,
+      'C' : this.temperatureCelsius,
+      'F' : this.temperatureFahrenheit,
+    });
+
+    localStorage.setItem('WheaterHistory', JSON.stringify(historicalTime));
+    console.log(historicalTime);
+    return historicalTime;
+
+
+  }
+}
