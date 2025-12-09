@@ -87,7 +87,7 @@ const response = (newCity.getWeather())
     return (celsium * 9 / 5 + 32).toFixed(1);
   };
   static waitingDownload() {
-      this.selector.classList.add('weather-card hidden');
+      this.selector.classList.add('weather-card', 'hidden');
   }
 
   addTime() {
