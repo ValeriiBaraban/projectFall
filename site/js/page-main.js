@@ -5,11 +5,6 @@
 //TODO Sets, updates, or changes local storage
 //TODO Contains form fields, validates those fields
 
-function sessionStorage() {
-  const data = sessionStorage.getItem('page-main.html');
-  
-};
-
 
 //TODO add 12 hours format
 function getTime() {
@@ -198,5 +193,3 @@ const sortingJson = async () => {
 }
 sortingJson();
 
-console.log('sessionStorage:', sessionStorage);
-console.log('typeof:', typeof sessionStorage.setItem);
