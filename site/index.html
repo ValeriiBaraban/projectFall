@@ -24,10 +24,15 @@
           <label for="name">Select a country</label>
           <input
             id="country"
+            list="countries"
             class="form-control"
             type="text"
             name="country"
+            placeholder="United States"
           />
+          <datalist id="countries">
+            <option value = "United States"></option>
+          </datalist>
           <small id="country-error" class="alert-text"></small>
         </div>
 
