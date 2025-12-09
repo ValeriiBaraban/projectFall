@@ -124,7 +124,7 @@ const response = (newCity.getWeather())
         city.classList = 'city';
         city.textContent = `Current weather in ${this.cityName}:`;
 
-        this.selector.appendChild(country);
+        //this.selector.appendChild(country);
         this.selector.appendChild(city);
 
 
