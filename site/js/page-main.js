@@ -155,6 +155,7 @@ const response = (newCity.getWeather())
         this.addTime();
         this.addTemp();
         this.addConditions();
+        waitingDownload();
     }
 };
 
