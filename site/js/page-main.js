@@ -190,7 +190,7 @@ const getZipCity = async () => {
 const getFile = async () => {
   await getZipCity();
   const data = JSON.parse(sessionStorage.getItem('zipCity'));
-  const getZip = data.filter((item) => item.physical_city.toLowerCase() === 'seattle');
+  const getZip = data.filter((item) => item.physical_city.toLowerCase() === 'shoreline');
   const getCity = data.filter((item) => item.delivery_zipcode === 98155);
 
   console.log(getZip);
