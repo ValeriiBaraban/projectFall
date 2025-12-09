@@ -87,26 +87,6 @@ const response = (newCity.getWeather())
     return (celsium * 9 / 5 + 32).toFixed(1);
   };
 
-  waitingDownload() {
-      
-      this.selector.classList.add('weather-card', 'hidden');
-  }
-
-  addLoadingScreen() {
-      const loadingScreen = document.createElement('div');
-      loadingScreen.classList.add('loading-screen', 'hidden');
-      const spinner = document.createElement('div');
-      spinner.classList.add('spinner');
-      const text = document.createElement('p');
-      text.textContent = 'Loading wheater...';
-
-      loadingScreen.appendChild(spinner);
-      loadingScreen.appendChild(text);
-
-      document.body.appendChild(loadingScreen);
-
-    }
-
   addTime() {
       const lastUpdated = document.createElement('h4');
       const formattingTime = `${this.lastUpdated[0]} : ${this.lastUpdated[1]}`;
@@ -174,8 +154,7 @@ const response = (newCity.getWeather())
         this.addTime();
         this.addTemp();
         this.addConditions();
-        this.waitingDownload();
-        this.addLoadingScreen();
+        
     }
 };
 
@@ -203,12 +182,49 @@ class localStorageForHistory extends CurrentWheater {
   };
 };
 
+class loadingCard {
+  constructor() {
+    this.card = this.addLoadingScreen();
+  }
+
+  waitingDownload() {
+    this.selector.classList.add('weather-card', 'hidden');
+  }
+
+  addLoadingScreen() {
+      const loadingScreen = document.createElement('div');
+      loadingScreen.classList.add('loading-screen', 'hidden');
+      const spinner = document.createElement('div');
+      spinner.classList.add('spinner');
+      const text = document.createElement('p');
+      text.textContent = 'Loading wheater...';
+
+      loadingScreen.appendChild(spinner);
+      loadingScreen.appendChild(text);
+
+      document.body.appendChild(loadingScreen);
+
+      return loadingScreen;
+
+    };
+
+    show() {
+
+    };
+
+    hide() {
+
+    };
+
+  }
+
+
+
 const getZipCity = async () => {
   const res = await fetch('/site/delivery_zipcode_physical_city.json');
 
   const file = await res.json();
   sessionStorage.setItem('zipCity', JSON.stringify(file));
-  //console.log(file);
 };
 
 
