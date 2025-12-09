@@ -182,14 +182,19 @@ class localStorageForHistory extends CurrentWheater {
   };
 };
 
-const sortingJson = async () => {
+const getZipCity = async () => {
   const res = await fetch('/site/delivery_zipcode_physical_city.json');
 
   const file = await res.json();
-  sessionStorage.setItem('keys', JSON.stringify(file));
-  console.log(file);
+  sessionStorage.setItem('zipCity', JSON.stringify(file));
+  //console.log(file);
+};
 
-  return file;
-}
 sortingJson();
 
+const getFile = async () => {
+  await getZipCity();
+  const data = sessionStorage.getItem('zipCity');
+  console.log(data);
+}
+getFile();
