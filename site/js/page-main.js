@@ -188,7 +188,7 @@ class localStorageForHistory extends CurrentWheater {
 };
 
 const sortingJson = async () => {
-  const res = await fetch('https://projectfall.click.s3.us-east-1.amazonaws.com/site/delivery_zipcode_physical_city.json');
+  const res = await fetch('/site/delivery_zipcode_physical_city.json');
 
   const file = await res.json();
   console.log(file);

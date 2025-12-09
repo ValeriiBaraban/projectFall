@@ -15,21 +15,6 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Debug
-        run: pwd
-
-      - name: path
-        run: ls -a
-
-      - name: create config.js for api
-        run: |
-            mkdir -p site/js
-              cat << EOF > site/js/config.js
-                  window.secret = {
-                    key: '${{ secrets.API_KEY }}'
-                  };
-                  EOF
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
