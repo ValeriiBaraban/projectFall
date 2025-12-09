@@ -54,7 +54,7 @@ class Geolocation {
 
 
 const dataNow = getTime();
-const selectedCity = 'SEATTLE'
+const selectedCity = 'Shoreline'
 const newCity = new Geolocation(selectedCity);
 const response = (newCity.getWeather())
   .then(function(data) {
