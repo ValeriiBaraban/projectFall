@@ -2,9 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // turn off browser validation
     document.querySelector('form').setAttribute('novalidate', '');
     
-    // Get the Job Title input field and hide it by default
-    const jobTitle = document.querySelector('#job-title');
-    jobTitle.classList.add('d-none');
+    // // Get the Job Title input field and hide it by default
+    // const jobTitle = document.querySelector('#job-title');
+    // jobTitle.classList.add('d-none');
 
     // Get the Coding Language block and hide it by default
     const codingLang = document.querySelector('#code-lang');
