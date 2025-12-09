@@ -193,7 +193,8 @@ const getZipCity = async () => {
 
 const getFile = async () => {
   await getZipCity();
-  const data = sessionStorage.getItem('zipCity');
+  const data = sessionStorage.getItem('zipCity').toLowerCase();
   console.log('data',data);
+
 }
 getFile();
