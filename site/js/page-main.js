@@ -81,18 +81,21 @@ const response = (newCity.getWeather())
     // this.windDir = response.current.wind_dir;
 };
 
-  #selector = document.querySelector('#current-wheater-container');
+  selector = document.querySelector('#current-wheater-container');
 
   #CToF (celsium) {
     return (celsium * 9 / 5 + 32).toFixed(1);
   };
+  static waitingDownload() {
+      this.selector.classList.add('weather-card hidden');
+  }
 
   addTime() {
       const lastUpdated = document.createElement('h4');
       const formattingTime = `${this.lastUpdated[0]} : ${this.lastUpdated[1]}`;
       lastUpdated.textContent = `Last updated at: ${formattingTime}`;
       lastUpdated.classList = 'updated-time';
-      this.#selector.appendChild(lastUpdated);
+      this.selector.appendChild(lastUpdated);
 
       return lastUpdated;
   }
@@ -105,8 +108,8 @@ const response = (newCity.getWeather())
     temp_f.textContent = `${this.temperatureFahrenheit} + ' °F'`;
 
 
-    this.#selector.appendChild(temp_c);
-    this.#selector.appendChild(temp_f);
+    this.selector.appendChild(temp_c);
+    this.selector.appendChild(temp_f);
 
     return [temp_c, temp_f];
   };
@@ -121,8 +124,8 @@ const response = (newCity.getWeather())
         city.classList = 'city';
         city.textContent = `Current weather in ${this.cityName}:`;
 
-        this.#selector.appendChild(country);
-        this.#selector.appendChild(city);
+        this.selector.appendChild(country);
+        this.selector.appendChild(city);
 
 
         return [country, city];
@@ -144,7 +147,7 @@ const response = (newCity.getWeather())
         // cond.appendChild(icon);
 
         // this.#selector.appendChild(cond);
-        this.#selector.appendChild(humidity);
+        this.selector.appendChild(humidity);
     };
     
     fetchAll() {
