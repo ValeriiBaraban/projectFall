@@ -98,7 +98,7 @@ const response = (newCity.getWeather())
       const spinner = document.createElement('div');
       spinner.classList.add('spinner');
       const text = document.createElement('p');
-      text.textContent.add('Loading wheater...');
+      text.textContent = 'Loading wheater...';
 
       loadingScreen.appendChild(spinner);
       loadingScreen.appendChild(text);
