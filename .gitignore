@@ -8,3 +8,4 @@ index.py
 terraform.tfstate
 terraform.tfstate.backup
 .terraform.tfstate.lock.info
+delivery_zipcode_physical_city.json

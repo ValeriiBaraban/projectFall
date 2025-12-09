@@ -166,7 +166,7 @@ const response = (newCity.getWeather())
 class localStorageForHistory extends CurrentWheater {
   constructor(response, cityName) {
     super(response, cityName);
-  }
+  };
 
   addLocalStorage() {
     const historicalTime = JSON.parse(localStorage.getItem('WheaterHistory')) || [];
@@ -184,5 +184,12 @@ class localStorageForHistory extends CurrentWheater {
     return historicalTime;
 
 
-  }
+  };
+};
+
+const sortingJson = async () => {
+  const res = await fetch('./delivery_zipcode_physical_city.json');
+  const file = await res.json();
+  console.log(file);
 }
+sortingJson();
