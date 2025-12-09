@@ -33,14 +33,20 @@
 
 
         <div class="form-group">
-          <label for="reason">Choose a City</label>
-          <select class="form-control" id="reason">
+          <label for="city">Select a City</label>
+          <!-- <select class="form-control" id="reason">
             <option>Choose One</option>
             <option value="job" id="job">Job opportunity</option>
             <option value="code" id="code">Talk code</option>
-          </select>
+          </select> -->
+          <input id="city" list="cities" placeholder="Start typing ...">
+          <datalist id="cities">
+            <option value = "London"></option>
+            <option value = "Seattle"></option>
+            <option value="Shoreline"></option>
+          </datalist>
         </div>
-         
+
         <div class="form-group">
           <input class="btn btn-primary" type="submit" value="Sign up" />
         </div>
