@@ -88,7 +88,7 @@ const response = (newCity.getWeather())
   };
 
   waitingDownload() {
-      this.selector.classList.add('weather-card hidden');
+      this.selector.classList.add('weather-card', 'hidden');
   }
 
   addTime() {
