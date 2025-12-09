@@ -101,8 +101,8 @@ const response = (newCity.getWeather())
     const temp_c = document.createElement('p');
     const temp_f = document.createElement('p');
 
-    temp_c.textContent = this.temperatureCelsius + ' °C';
-    temp_f.textContent = this.temperatureFahrenheit + ' °F';
+    temp_c.textContent = `${this.temperatureCelsius} + ' °C'`;
+    temp_f.textContent = `${this.temperatureFahrenheit} + ' °F'`;
 
 
     this.#selector.appendChild(temp_c);
