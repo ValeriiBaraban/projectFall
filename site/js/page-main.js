@@ -96,10 +96,14 @@ const response = (newCity.getWeather())
       const loadingScreen = document.createElement('div');
       loadingScreen.classList.add('loading-screen', 'hidden');
       const spinner = document.createElement('div');
-      spinner.classList.add('spinneer');
+      spinner.classList.add('spinner');
       const text = document.createElement('p');
       text.textContent.add('Loading wheater...');
 
+      loadingScreen.appendChild(spinner);
+      loadingScreen.appendChild(text);
+
+      document.body.appendChild(loadingScreen);
 
     }
 
@@ -109,6 +113,7 @@ const response = (newCity.getWeather())
       lastUpdated.textContent = `Last updated at: ${formattingTime}`;
       lastUpdated.classList = 'updated-time';
       this.selector.appendChild(lastUpdated);
+
 
       return lastUpdated;
   }
