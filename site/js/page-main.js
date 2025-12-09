@@ -52,13 +52,9 @@ class Geolocation {
     }
 }
 
-// async function look(data) {
-//     const res = await data;
-//      console.log(res);
-// }
-// look(newCity.getWeather());
+
 const dataNow = getTime();
-const selectedCity = 'Shoreline'
+const selectedCity = 'SEATTLE'
 const newCity = new Geolocation(selectedCity);
 const response = (newCity.getWeather())
   .then(function(data) {
