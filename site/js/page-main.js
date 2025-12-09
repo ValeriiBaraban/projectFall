@@ -114,7 +114,7 @@ const response = (newCity.getWeather())
     return [temp_c, temp_f];
   };
 
-    addLocation() {
+    static addLocation() {
         const country = document.createElement('h2');
         const city = document.createElement('h3');
 
@@ -124,7 +124,7 @@ const response = (newCity.getWeather())
         city.classList = 'city';
         city.textContent = `Current weather in ${this.cityName}:`;
 
-        //this.selector.appendChild(country);
+        this.selector.appendChild(country);
         this.selector.appendChild(city);
 
 
