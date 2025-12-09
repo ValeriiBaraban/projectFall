@@ -58,12 +58,12 @@ const selectedCity = 'Shoreline'
 const newCity = new Geolocation(selectedCity);
 const response = (newCity.getWeather())
   .then(function(data) {
-    const currentWheater = new localStorageForHistory(data, selectedCity);
+    const fetchCurrentWheater = new localStorageForHistory(data, selectedCity);
     // currentWheater.addLocation();
     // currentWheater.addTemp();
     // currentWheater.addConditions();
-    currentWheater.fetchAll();
-    currentWheater.addLocalStorage();
+    fetchCurrentWheater.fetchAll();
+    fetchCurrentWheater.addLocalStorage();
 
 
   });
