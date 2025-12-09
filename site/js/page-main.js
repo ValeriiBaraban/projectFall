@@ -190,7 +190,6 @@ const getZipCity = async () => {
   //console.log(file);
 };
 
-sortingJson();
 
 const getFile = async () => {
   await getZipCity();
