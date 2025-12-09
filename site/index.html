@@ -33,55 +33,14 @@
 
 
         <div class="form-group">
-          <label for="reason">Reason for contacting</label>
+          <label for="reason">Choose a City</label>
           <select class="form-control" id="reason">
             <option>Choose One</option>
             <option value="job" id="job">Job opportunity</option>
             <option value="code" id="code">Talk code</option>
           </select>
         </div>
-
-        <div class="form-group" id="job-title">
-          <label for="job-title">Job Title</label>
-
-          <input
-            id="job-input"
-            class="form-control"
-            type="text"
-            name="job-input"
-          />
-          <p><small id="job-title-error" class="alert-text"></small></p>
-
-
-          <label for="company-web">Company website</label>
-          <input
-            id="company-web-input"
-            class="form-control"
-            type="url"
-            name="company-web"
-          />
-          <p><small id="company-error" class="alert-text"></small></p>
-        </div>
-
-        <div class="form-group" id="code-lang">
-          <label for="coding-lang">Coding language</label>
-          <select class="form-control" name="selectorLang" id="selectorLang" required>
-            <option value="">Choose One</option>
-            <option value="JavaScript" id="JavaScript">JavaScript</option>
-            <option value="HTML" id="html">HTML</option>
-            <option value="CSS" id="css">CSS</option>
-            <option value="Python" id="python">Python</option>
-            <option value="Pascal" id="pascal">Pascal</option>
-          </select>
-          <small id="error" class="alert-text"></small>
-        </div>
-
-        <div class="form-group">
-          <label for="textarea">Message</label>
-          <textarea class="form-control" id="textarea" rows="3"></textarea>
-          <small id="message-error" class="alert-text"></small>
-        </div>
-
+         
         <div class="form-group">
           <input class="btn btn-primary" type="submit" value="Sign up" />
         </div>
