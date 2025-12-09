@@ -81,13 +81,13 @@ const response = (newCity.getWeather())
     // this.windDir = response.current.wind_dir;
 };
 
-  static selector = document.querySelector('#current-wheater-container');
+  selector = document.querySelector('#current-wheater-container');
 
   #CToF (celsium) {
     return (celsium * 9 / 5 + 32).toFixed(1);
   };
   static waitingDownload() {
-      this.selector.classList.add('weather-card', 'hidden');
+      selector.classList.add('weather-card hidden');
   }
 
   addTime() {
@@ -114,7 +114,7 @@ const response = (newCity.getWeather())
     return [temp_c, temp_f];
   };
 
-    static addLocation() {
+    addLocation() {
         const country = document.createElement('h2');
         const city = document.createElement('h3');
 
