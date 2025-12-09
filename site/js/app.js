@@ -1,188 +1,178 @@
-//TODOOne or more Classes (must use static methods and/or prototype methods)
-//TODO Write testable code, use Jasmine unit tests
-//TODO One or more timing functions
-//TODO One or more fetch requests to a 3rd party API
-//TODO Sets, updates, or changes local storage
-//TODO Contains form fields, validates those fields
-
-function sessionStorage() {
-  const data = sessionStorage.getItem('page-main.html');
-  
-};
-
-
-//TODO add 12 hours format
-function getTime() {
-  const date = new Date();
-  return [date.getHours(), String(date.getMinutes()).padStart(2, '0')];
-} 
-
-
-class ConstrucorBaseUrl {
-    constructor(params) {
-        this.BASEURL = 'https://api.open-meteo.com/v1/forecast';
-        //&hourly=temperature_2m,relative_humidity_2m,pressure_msl,windspeed_10m,cloudcover,visibility&daily=sunrise,sunset,uv_index_max&timezone=auto
-    }   //https://api.open-meteo.com/v1/forecast?latitude=47.60&longitude=-122.33&current_weather=true
-
-};
-
-class Geolocation {
-
-    constructor(selectedCity) {
-        this.city = selectedCity;
-        this.geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${this.city}&count=1`;
-        this.BASEURL = 'https://api.open-meteo.com/v1/forecast';
-        this.daily = '&daily=';
-        this.hourly = '&hourly=';
-        this.minutely = '&minutely_15=';
-    }
-
-    async getCoordinates() {
-        const res = await fetch(this.geoUrl);
-        const data = await res.json();
-        const country = data.results[0].country;
-        const latitude = data.results[0].latitude;
-        const longitude = data.results[0].longitude;
-        return [latitude, longitude, country];
-    };
-
-    async getWeather() {
-        const [latitude, longitude, country] = await this.getCoordinates();
-        const url = `${this.BASEURL}?latitude=${latitude}&longitude=${longitude}${this.hourly}temperature_2m&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,rain,showers,snowfall,cloud_cover,pressure_msl,surface_pressure,wind_speed_10m`;
-        //`${this.BASEURL}?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,rain,showers,snowfall,cloud_cover,cloud_cover_low,cloud_cover_mid,cloud_cover_high,wind_speed_10m,wind_direction_10m,wind_gusts_10m,pressure_msl,surface_pressure,visibility,is_day&timezone=auto`;
-        const res = await fetch(url);
-        const data = await res.json();
-        data.country = country;
-        return data;
-    }
-}
-
-// async function look(data) {
-//     const res = await data;
-//      console.log(res);
-// }
-// look(newCity.getWeather());
-const dataNow = getTime();
-const selectedCity = 'Shoreline'
-const newCity = new Geolocation(selectedCity);
-const response = (newCity.getWeather())
-  .then(function(data) {
-    const currentWheater = new localStorageForHistory(data, selectedCity);
-    // currentWheater.addLocation();
-    // currentWheater.addTemp();
-    // currentWheater.addConditions();
-    currentWheater.fetchAll();
-    currentWheater.addLocalStorage();
-
-
-  });
-  
-  class CurrentWheater {
-  constructor(response, cityName) {
-    this.temperatureCelsius = response.current.temperature_2m;
-    this.temperatureFahrenheit = this.#CToF(this.temperatureCelsius);
-    this.cityName = cityName;
-    this.country = response.country;
-    this.lastUpdated = getTime();//dataNow;
-
-    // this.condition = response.current.condition;//text,icon,code
-    this.humidity = response.current.relative_humidity_2m;
-    // this.windDir = response.current.wind_dir;
-};
-
-  #selector = document.querySelector('#current-wheater-container');
-
-  #CToF (celsium) {
-    return (celsium * 9 / 5 + 32).toFixed(1);
-  };
-
-  addTime() {
-      const lastUpdated = document.createElement('h4');
-      const formattingTime = `${this.lastUpdated[0]} : ${this.lastUpdated[1]}`;
-      lastUpdated.textContent = `Last updated at: ${formattingTime}`;
-      lastUpdated.classList = 'updated-time';
-      this.#selector.appendChild(lastUpdated);
-
-      return lastUpdated;
-  }
-
-  addTemp() {
-    const temp_c = document.createElement('p');
-    const temp_f = document.createElement('p');
-
-    temp_c.textContent = this.temperatureCelsius + ' °C';
-    temp_f.textContent = this.temperatureFahrenheit + ' °F';
-
-
-    this.#selector.appendChild(temp_c);
-    this.#selector.appendChild(temp_f);
-
-    return [temp_c, temp_f];
-  };
-
-    addLocation() {
-        const country = document.createElement('h2');
-        const city = document.createElement('h3');
-
-        country.classList = 'country';
-        country.textContent = this.country;
-
-        city.classList = 'city';
-        city.textContent = `Current weather in ${this.cityName}:`;
-
-        this.#selector.appendChild(country);
-        this.#selector.appendChild(city);
-
-
-        return [country, city];
-    };
-
-    addConditions() {
-        const cond = document.createElement('div');
-
-        const humidity = document.createElement('p');
-        humidity.textContent = this.humidity + "%";
-        // const text = document.createElement('p');
-        // text.textContent = this.condition.text;
-        
-        // const icon = document.createElement('img');
-        // icon.src = `https:${this.condition.icon}`;
-
-        // cond.appendChild(text);
-        // cond.appendChild(icon);
-
-        // this.#selector.appendChild(cond);
-        this.#selector.appendChild(humidity);
-    };
+document.addEventListener('DOMContentLoaded', () => {
+    // turn off browser validation
+    document.querySelector('form').setAttribute('novalidate', '');
     
-    fetchAll() {
-        this.addLocation();
-        this.addTime();
-        this.addTemp();
-        this.addConditions();
-    }
-};
+    // Get the Job Title input field and hide it by default
+    const jobTitle = document.querySelector('#job-title');
+    jobTitle.classList.add('d-none');
 
-class localStorageForHistory extends CurrentWheater {
-  constructor(response, cityName) {
-    super(response, cityName);
-  }
+    // Get the Coding Language block and hide it by default
+    const codingLang = document.querySelector('#code-lang');
+    codingLang.classList.add('d-none');
 
-  addLocalStorage() {
-    const historicalTime = JSON.parse(localStorage.getItem('WheaterHistory')) || [];
-    historicalTime.push({
-//TODO norm format this
-//TODO add autoupdater
-      'city': this.cityName,
-      'time': `${this.lastUpdated[0]}:${this.lastUpdated[1]}`,
-      'C' : this.temperatureCelsius,
-      'F' : this.temperatureFahrenheit,
+    // Disable "required" initially to avoid "not focusable" error
+    selectorLang.removeAttribute('required'); // disable required to avoid "not focusable" error
+
+    // Get the "Reason for contacting" select element
+    const select = document.querySelector('#reason');
+
+    // Listen for changes in the "reason" dropdown
+    select.addEventListener('change', function () {
+
+        // If user selects "job", show job fields and hide coding fields
+        if (this.value === 'job') {
+            jobTitle.classList.remove('d-none');
+            codingLang.classList.add('d-none');
+
+            // Make coding language field required
+            selectorLang.setAttribute('required', '');
+
+        }
+
+        // If user selects "code", show coding fields and hide job fields
+        else if (this.value === 'code') {
+            jobTitle.classList.add('d-none');
+            codingLang.classList.remove('d-none');
+
+            // Make coding language field required
+            selectorLang.setAttribute('required', '');
+        }
+
     });
 
-    localStorage.setItem('WheaterHistory', JSON.stringify(historicalTime));
-    console.log(historicalTime);
-    return historicalTime;
+    // Get the error message container
+    const error = document.querySelector('.alert-text');
 
+    // Get the coding language select element
+    const selectorCodingLanguage = document.querySelector('#selectorLang');
 
-  }
-}
+    // Validate coding language field when the value changes
+    selectorCodingLanguage.addEventListener('change', function () {
+
+        // If no language is selected, mark field as invalid and show message
+        if (this.value === '') {
+            selectorCodingLanguage.classList.add('invalid');
+            selectorCodingLanguage.classList.remove('valid');
+            error.textContent = 'Please select a coding language';
+        }
+
+        // If a valid option is selected, mark field as valid and clear message
+        else if (this.value !== '') {
+            selectorCodingLanguage.classList.add('valid');
+            selectorCodingLanguage.classList.remove('invalid');
+            error.textContent = '';
+        }
+
+    });
+ 
+    //errors for field: Name
+    const nameError = document.querySelector('#name-error');
+    const nameField = document.querySelector('#name');
+    // nameField.setAttribute('required', '');
+    // nameField.setAttribute('minlength', 3);
+
+    // checking Name
+    const checkingFieldName = () => {
+        if(nameField.value.length === 0) {
+            nameError.textContent = "field requared";
+            return false;
+        } else if(nameField.value.length < 3) {
+            nameError.textContent = "min 3 symbols";
+            return false;
+        } else {
+            nameError.textContent = "";
+            return true;
+        };
+    };
+
+     //errors for field: email
+    const emailError = document.querySelector('#email-error');
+    const emailField = document.querySelector('#email');
+    //emailField.setAttribute('required', '');
+    // checking email
+    const checkingFieldEmail = () => {
+        const emailRegEx = /\w+@\w+\.\w+/;
+        if(emailField.value.length === 0) {
+            emailError.textContent = "field requared";
+            return false;
+        } else if(!emailRegEx.test(emailField.value)) {
+            emailError.textContent = "must be like mymail@example.com";
+            return false;
+        } else {
+            emailError.textContent = "";
+            return true;
+        };
+    };
+    //errors for field: message
+    const messageError = document.querySelector('#message-error');
+    const messageField = document.querySelector('#textarea')
+    //checking messages field
+    const checkingFieldMessage = () => {
+        if(messageField.value.length === 0) {
+            messageError.textContent = "field requared";
+            return false;
+        } else if(messageField.value.length < 10) {
+            messageError.textContent = "min 10 symbols";
+            return false;
+        } else {
+            messageError.textContent = "";
+            return true;
+        };
+    };
+
+    //errors for field: job title
+    const jobTitleError = document.querySelector('#job-title-error');
+    const jobTitleField = document.querySelector('#job-input');
+    const reason = document.querySelector('#reason');
+    //validations conditions job title field
+    const checkingFieldJobTitle = () => {
+       if(reason.value === 'job') { 
+        if(jobTitleField.value !== '') {
+            jobTitleError.textContent = 'Job title is present';
+            return true;
+        } else {
+            jobTitleError.textContent = 'must be not empty';
+            return false;
+        }
+      };
+    };
+
+    const companyError = document.querySelector('#company-error');
+    const companyField = document.querySelector('#company-web-input');
+    const checkingFieldWebCompany = () => {
+        const webRegEx = /https?\:\/\/.+\..+/;
+        if(reason.value === 'job') {
+            if(companyField.value !== '') {
+                if(webRegEx.test(companyField.value)) {
+                    companyError.textContent = 'Web is present and correct';
+                    return true;
+                } else {
+                    companyError.textContent = 'must to be https://example.com';
+                    return false;
+                }
+            }
+        }
+    };
+
+// checking job title field not empty. if yes get 'must be not empty'
+    reason.addEventListener('change', checkingFieldJobTitle);        
+    jobTitleField.addEventListener('input', checkingFieldJobTitle);    
+// checking web company field not empty. if yes get 'must be not empty'    
+    reason.addEventListener('change', checkingFieldWebCompany);        
+    companyField.addEventListener('input', checkingFieldWebCompany);    
+
+// Validation runs when the button is clicked
+    const submit = document.querySelector('.btn-primary');
+    submit.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Run all validation functions/ consts received true or false
+       const checkingFieldNameBoolean = checkingFieldName();
+       const checkingFieldEmailBoolean = checkingFieldEmail();
+       const checkingFieldMessageBoolean = checkingFieldMessage();
+       if((checkingFieldNameBoolean && checkingFieldEmailBoolean && checkingFieldMessageBoolean)) {
+                    window.location.href = './site/page-main.html';
+       };
+
+    });
+
+});
