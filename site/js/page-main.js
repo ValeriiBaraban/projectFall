@@ -9,7 +9,7 @@
 //TODO add 12 hours format
 function getTime() {
   const date = new Date();
-  return [date.getHours(), String(date.getMinutes()).padStart(2, '0')];
+  return [String(date.getHours()).padStart(2, '0'), String(date.getMinutes()).padStart(2, '0')];
 } 
 
 
