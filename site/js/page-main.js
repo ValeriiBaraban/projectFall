@@ -195,6 +195,6 @@ sortingJson();
 const getFile = async () => {
   await getZipCity();
   const data = sessionStorage.getItem('zipCity');
-  console.log(data);
+  console.log('data',data);
 }
 getFile();
