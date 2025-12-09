@@ -129,7 +129,7 @@ const response = (newCity.getWeather())
     };
 
     addConditions() {
-        const cond = document.createElement('div');
+        //const cond = document.createElement('div');
 
         const humidity = document.createElement('p');
         humidity.classList = 'humidity';
