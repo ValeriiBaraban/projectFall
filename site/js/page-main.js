@@ -191,6 +191,10 @@ const sortingJson = async () => {
   const res = await fetch('/site/delivery_zipcode_physical_city.json');
 
   const file = await res.json();
+  sessionStorage.setItem('keys', JSON.stringify(file));
   console.log(file);
+
+  return file;
 }
 sortingJson();
+
