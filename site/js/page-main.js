@@ -182,18 +182,18 @@ class localStorageForHistory extends CurrentWheater {
   };
 };
 
-class loadingCard {
+class loadingCard extends CurrentWheater {
   constructor() {
     this.card = this.addLoadingScreen();
   }
 
   waitingDownload() {
     this.selector.classList.add('weather-card', 'hidden');
-  }
+  };
 
   addLoadingScreen() {
       const loadingScreen = document.createElement('div');
-      loadingScreen.classList.add('loading-screen', 'hidden');
+      loadingScreen.classList.add('loading-screen');
       const spinner = document.createElement('div');
       spinner.classList.add('spinner');
       const text = document.createElement('p');
@@ -209,14 +209,19 @@ class loadingCard {
     };
 
     show() {
+      this.card.classList.remove('hidden');
 
     };
 
     hide() {
-
+      this.card.classList.add('hidden');
     };
 
+    
   }
+
+
+  
 
 
 
