@@ -196,6 +196,6 @@ const getFile = async () => {
   const data = sessionStorage.getItem('zipCity');
   const getCity = data.filter((item) => item.physical_city.toLowerCase() === 'seattle')
 
-
+  console.log(getCity);
 }
 getFile();
