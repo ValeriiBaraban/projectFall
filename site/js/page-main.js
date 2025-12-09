@@ -86,7 +86,7 @@ const response = (newCity.getWeather())
   #CToF (celsium) {
     return (celsium * 9 / 5 + 32).toFixed(1);
   };
-  static waitingDownload() {
+  waitingDownload() {
       selector.classList.add('weather-card hidden');
   }
 
