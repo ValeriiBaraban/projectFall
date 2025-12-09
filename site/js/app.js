@@ -169,7 +169,7 @@ class localStorageForHistory extends CurrentWheater {
   }
 
   addLocalStorage() {
-    const historicalTime = JSON.parse(localStorage.getItem('WheaterHistory'));
+    const historicalTime = JSON.parse(localStorage.getItem('WheaterHistory')) || [];
     historicalTime.push({
 //TODO norm format this
 //TODO add autoupdater
