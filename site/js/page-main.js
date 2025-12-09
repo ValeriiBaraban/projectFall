@@ -95,10 +95,12 @@ const response = (newCity.getWeather())
   addLoadingScreen() {
       const loadingScreen = document.createElement('div');
       loadingScreen.classList.add('loading-screen', 'hidden');
-      loadingScreen.setAttribute('loading-screen');
-      loadingScreen.nextElementSibling('div');
-      loadingScreen.nextElementSibling.classList.add('spinner');
-      
+      const spinner = document.createElement('div');
+      spinner.classList.add('spinneer');
+      const text = document.createElement('p');
+      text.textContent.add('Loading wheater...');
+
+
     }
 
   addTime() {
