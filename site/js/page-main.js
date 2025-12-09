@@ -81,7 +81,7 @@ const response = (newCity.getWeather())
     // this.windDir = response.current.wind_dir;
 };
 
-  selector = document.querySelector('#current-wheater-container');
+  static selector = document.querySelector('#current-wheater-container');
 
   #CToF (celsium) {
     return (celsium * 9 / 5 + 32).toFixed(1);
