@@ -132,7 +132,7 @@ const response = (newCity.getWeather())
         const cond = document.createElement('div');
 
         const humidity = document.createElement('p');
-        humidity.textContent = this.humidity + "%";
+        humidity.textContent = `Humidity ${this.humidity} %`;
         // const text = document.createElement('p');
         // text.textContent = this.condition.text;
         
