@@ -175,7 +175,7 @@ const response = (newCity.getWeather())
         this.addTemp();
         this.addConditions();
         this.waitingDownload();
-        addLoadingScreen();
+        this.addLoadingScreen();
     }
 };
 
