@@ -187,7 +187,7 @@ const getZipCity = async () => {
 };
 
 
-const getFile = async () => {
+const searchInFile = async () => {
   await getZipCity();
   const data = JSON.parse(sessionStorage.getItem('zipCity'));
   const getZip = data.filter((item) => item.physical_city.toLowerCase() === 'shoreline');
@@ -196,4 +196,4 @@ const getFile = async () => {
   console.log(getZip);
   console.log(getCity);
 }
-getFile();
+searchInFile();
