@@ -88,8 +88,18 @@ const response = (newCity.getWeather())
   };
 
   waitingDownload() {
+      
       this.selector.classList.add('weather-card', 'hidden');
   }
+
+  addLoadingScreen() {
+      const loadingScreen = document.createElement('div');
+      loadingScreen.classList.add('loading-screen', 'hidden');
+      loadingScreen.setAttribute('loading-screen');
+      loadingScreen.nextElementSibling('div');
+      loadingScreen.nextElementSibling.classList.add('spinner');
+      
+    }
 
   addTime() {
       const lastUpdated = document.createElement('h4');
@@ -150,6 +160,7 @@ const response = (newCity.getWeather())
         // this.#selector.appendChild(cond);
         this.selector.appendChild(humidity);
     };
+    
     
     fetchAll() {
         this.addLocation();
