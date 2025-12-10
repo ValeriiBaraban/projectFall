@@ -168,9 +168,9 @@ class loadingCard {
     this.card = this.addLoadingScreen();
   }
 
-  // waitingDownload(selector) {
-  //   selector.classList.add('weather-card', 'hidden');
-  // };
+  waitingDownload(selector) {
+    selector.classList.add('weather-card', 'hidden');
+  };
 
   addLoadingScreen() {
       const loadingScreen = document.createElement('div');
