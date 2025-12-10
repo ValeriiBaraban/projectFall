@@ -5,21 +5,16 @@
 //TODO Sets, updates, or changes local storage
 //TODO Contains form fields, validates those fields
 
-
+document.addEventListener('DOMContentLoaded', async () => {
+  // if (!sessionStorage.getItem('allowPage2')) {
+  //   window.location.href = 'index.html';
+  //   return;
+  // }
 //TODO add 12 hours format
 function getTime() {
   const date = new Date();
   return [String(date.getHours()).padStart(2, '0'), String(date.getMinutes()).padStart(2, '0')];
 } 
-
-
-class ConstrucorBaseUrl {
-    constructor(params) {
-        this.BASEURL = 'https://api.open-meteo.com/v1/forecast';
-        //&hourly=temperature_2m,relative_humidity_2m,pressure_msl,windspeed_10m,cloudcover,visibility&daily=sunrise,sunset,uv_index_max&timezone=auto
-    }   //https://api.open-meteo.com/v1/forecast?latitude=47.60&longitude=-122.33&current_weather=true
-
-};
 
 class Geolocation {
 
@@ -44,7 +39,6 @@ class Geolocation {
     async getWeather() {
         const [latitude, longitude, country] = await this.getCoordinates();
         const url = `${this.BASEURL}?latitude=${latitude}&longitude=${longitude}${this.hourly}temperature_2m&current=temperature_2m,relative_humidity_2m,apparent_temperature,is_day,precipitation,rain,showers,snowfall,cloud_cover,pressure_msl,surface_pressure,wind_speed_10m`;
-        //`${this.BASEURL}?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,apparent_temperature,relative_humidity_2m,precipitation,rain,showers,snowfall,cloud_cover,cloud_cover_low,cloud_cover_mid,cloud_cover_high,wind_speed_10m,wind_direction_10m,wind_gusts_10m,pressure_msl,surface_pressure,visibility,is_day&timezone=auto`;
         const res = await fetch(url);
         const data = await res.json();
         data.country = country;
@@ -54,14 +48,12 @@ class Geolocation {
 
 
 const dataNow = getTime();
-const selectedCity = 'Shoreline'
+const selectedCity = sessionStorage.getItem('selectedCity').toLowerCase();
 const newCity = new Geolocation(selectedCity);
 const response = (newCity.getWeather())
   .then(function(data) {
     const fetchCurrentWheater = new localStorageForHistory(data, selectedCity);
-    // currentWheater.addLocation();
-    // currentWheater.addTemp();
-    // currentWheater.addConditions();
+    
     fetchCurrentWheater.fetchAll();
     fetchCurrentWheater.addLocalStorage();
 
@@ -74,11 +66,8 @@ const response = (newCity.getWeather())
     this.temperatureFahrenheit = this.#CToF(this.temperatureCelsius);
     this.cityName = cityName;
     this.country = response.country;
-    this.lastUpdated = getTime();//dataNow;
-
-    // this.condition = response.current.condition;//text,icon,code
+    this.lastUpdated = getTime();
     this.humidity = response.current.relative_humidity_2m;
-    // this.windDir = response.current.wind_dir;
 };
 
   selector = document.querySelector('#current-wheater-container');
@@ -93,7 +82,6 @@ const response = (newCity.getWeather())
       lastUpdated.textContent = `Last updated at: ${formattingTime}`;
       lastUpdated.classList = 'updated-time';
       this.selector.appendChild(lastUpdated);
-
 
       return lastUpdated;
   }
@@ -112,39 +100,26 @@ const response = (newCity.getWeather())
     return [temp_c, temp_f];
   };
 
-    addLocation() {
-        const country = document.createElement('h2');
-        const city = document.createElement('h3');
+  addLocation() {
+    const country = document.createElement('h2');
+    const city = document.createElement('h3');
 
-        country.classList = 'country';
-        country.textContent = this.country;
+    country.classList = 'country';
+    country.textContent = this.country;
 
-        city.classList = 'city';
-        city.textContent = `Current weather in ${this.cityName}:`;
+    city.classList = 'city';
+    city.textContent = `Current weather in ${this.cityName}:`;
 
-        this.selector.appendChild(country);
-        this.selector.appendChild(city);
+    this.selector.appendChild(country);
+    this.selector.appendChild(city);
 
+    return [country, city];
+};
 
-        return [country, city];
-    };
-
-    addConditions() {
-        //const cond = document.createElement('div');
-
+  addConditions() {
         const humidity = document.createElement('p');
         humidity.classList = 'humidity';
         humidity.textContent = `Humidity ${this.humidity} %`;
-        // const text = document.createElement('p');
-        // text.textContent = this.condition.text;
-        
-        // const icon = document.createElement('img');
-        // icon.src = `https:${this.condition.icon}`;
-
-        // cond.appendChild(text);
-        // cond.appendChild(icon);
-
-        // this.#selector.appendChild(cond);
         this.selector.appendChild(humidity);
     };
     
@@ -182,14 +157,14 @@ class localStorageForHistory extends CurrentWheater {
   };
 };
 
-class loadingCard extends CurrentWheater {
+class loadingCard {
   constructor() {
     this.card = this.addLoadingScreen();
   }
 
-  waitingDownload() {
-    this.selector.classList.add('weather-card', 'hidden');
-  };
+  // waitingDownload(selector) {
+  //   selector.classList.add('weather-card', 'hidden');
+  // };
 
   addLoadingScreen() {
       const loadingScreen = document.createElement('div');
@@ -216,12 +191,11 @@ class loadingCard extends CurrentWheater {
     hide() {
       this.card.classList.add('hidden');
     };
-
     
-  }
+  };
 
 
-  
+const loader = new loadingCard();  
 
 
 
@@ -236,10 +210,12 @@ const getZipCity = async () => {
 const searchInFile = async () => {
   await getZipCity();
   const data = JSON.parse(sessionStorage.getItem('zipCity'));
-  const getZip = data.filter((item) => item.physical_city.toLowerCase() === 'shoreline');
-  const getCity = data.filter((item) => item.delivery_zipcode === 98155);
+  const getZip = data.filter((item) => item.physical_city.toLowerCase() === sessionStorage.getItem('selectedCity').toLowerCase());
+  //const getCity = data.filter((item) => item.delivery_zipcode === sessionStorage.getItem('zip'));
 
   console.log(getZip);
   console.log(getCity);
 }
 searchInFile();
+
+});
