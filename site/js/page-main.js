@@ -56,7 +56,7 @@ const response = (newCity.getWeather())
     
     fetchCurrentWheater.fetchAll();
     fetchCurrentWheater.addLocalStorage();
-    if(!fetchCurrentWheater) {
+    if(!data) {
       loader.show();
       loader.waitingDownload(selector);
     } else {
