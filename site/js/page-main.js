@@ -178,7 +178,7 @@ class loadingCard {
       const spinner = document.createElement('div');
       spinner.classList.add('spinner');
       const text = document.createElement('p');
-      text.classList.add('loading-text');
+      //text.classList.add('loading-text');
       text.textContent = 'Loading wheater...';
 
       loadingScreen.appendChild(spinner);
