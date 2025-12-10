@@ -163,10 +163,11 @@ class loadingCard {
   constructor() {
       this.card = this.addLoadingScreen();
       this.selector = document.querySelector('#current-wheater-container');
-
+  
   }
 
   waitingDownload() {
+      this.selector.innerHTML = '';
       this.selector.classList.add('weather-card', 'hidden');
   };
 
