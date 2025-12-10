@@ -203,18 +203,18 @@ class loadingCard {
   };
 
 
-// const loader = new loadingCard();  
+const loader = new loadingCard();  
 
-// //timer for loading wheater
-// const switchLoading = () => {
-//   loader.show();
+//timer for loading wheater
+const switchLoading = () => {
+  loader.show();
   
-//   setTimeout(() => {
-//     loader.hide();
-//   }, 5000);
-// }
+  setTimeout(() => {
+    loader.hide();
+  }, 5000);
+}
 
-// switchLoading();
+switchLoading();
 
 //download list of cities and writing to session storage
 const getZipCity = async () => {
