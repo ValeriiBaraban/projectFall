@@ -199,22 +199,22 @@ const loader = new loadingCard();
 
 
 
-// const getZipCity = async () => {
-//   const res = await fetch('/site/delivery_zipcode_physical_city.json');
+const getZipCity = async () => {
+  const res = await fetch('/site/delivery_zipcode_physical_city.json');
 
-//   const file = await res.json();
-//   sessionStorage.setItem('zipCity', JSON.stringify(file));
-// };
+  const file = await res.json();
+  sessionStorage.setItem('zipCity', JSON.stringify(file));
+};
 
 
-// const searchInFile = async () => {
-//   await getZipCity();
-//   const data = JSON.parse(sessionStorage.getItem('zipCity'));
-//   const getZip = data.filter((item) => item.physical_city.toLowerCase() === sessionStorage.getItem('selectedCity').toLowerCase());
-//   //const getCity = data.filter((item) => item.delivery_zipcode === sessionStorage.getItem('zip'));
+const searchInFile = async () => {
+  await getZipCity();
+  const data = JSON.parse(sessionStorage.getItem('zipCity'));
+  const getZip = data.filter((item) => item.physical_city.toLowerCase() === sessionStorage.getItem('selectedCity').toLowerCase());
+  //const getCity = data.filter((item) => item.delivery_zipcode === sessionStorage.getItem('zip'));
 
-//   console.log(getZip);
-// }
-// searchInFile();
+  console.log(getZip);
+}
+searchInFile();
 
 });
