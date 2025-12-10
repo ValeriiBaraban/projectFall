@@ -214,7 +214,6 @@ const searchInFile = async () => {
   //const getCity = data.filter((item) => item.delivery_zipcode === sessionStorage.getItem('zip'));
 
   console.log(getZip);
-  console.log(getCity);
 }
 searchInFile();
 
