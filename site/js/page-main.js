@@ -127,6 +127,8 @@ const response = (newCity.getWeather())
     
     
     fetchAll() {
+      console.log('RENDER WEATHER CARD');
+
         this.addLocation();
         this.addTime();
         this.addTemp();
@@ -167,7 +169,7 @@ class loadingCard {
   }
 
   waitingDownload() {
-      this.selector.innerHTML = '';
+    
       this.selector.classList.add('weather-card', 'hidden');
   };
 
