@@ -204,7 +204,7 @@ const loader = new loadingCard();
 
 const showHideCard = () => {
   loader.show();
-  loader.waitingDownload();
+  loader.waitingDownload(loader.selector);
 
   setTimeout(() => {
     loader.hide();
