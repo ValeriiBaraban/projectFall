@@ -203,12 +203,11 @@ class loadingCard {
 const loader = new loadingCard();  
 
 const showHideCard = () => {
-    loader.hide();
-
+  loader.show();
+  loader.waitingDownload();
 
   setTimeout(() => {
-    loader.show();
-    loader.waitingDownload();
+    loader.hide();
   }, 5000);
 };
 
