@@ -23,6 +23,17 @@ body {
 
 }
 
+.weather-card .hidden{
+    background: #142744;
+    color: aliceblue;
+    padding: 24px 28px;
+    border-radius: 16px;
+    width: 320px;
+    box-sizing: border-box;
+    display: none;
+
+}
+
 .country {
   margin: 0;
   font-size: 18px;
