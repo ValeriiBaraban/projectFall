@@ -2,6 +2,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // turn off browser validation
     document.querySelector('form').setAttribute('novalidate', '');
     
+    //add animation to Wheater
+    document.querySelector('h2').classList.add('loading-text');
+    
     // Get the error message container
     const error = document.querySelector('.alert-text');
  

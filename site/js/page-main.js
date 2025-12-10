@@ -127,7 +127,7 @@ const response = (newCity.getWeather())
     
     
     fetchAll() {
-      console.log('RENDER WEATHER CARD');
+  console.trace('RENDER WEATHER CARD', data);
 
         this.addLocation();
         this.addTime();
