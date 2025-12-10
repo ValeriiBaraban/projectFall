@@ -127,7 +127,7 @@ const response = (newCity.getWeather())
     
     
     fetchAll() {
-
+        this.selector.innerHTML = '';
         this.addLocation();
         this.addTime();
         this.addTemp();
