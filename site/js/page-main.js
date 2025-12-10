@@ -52,15 +52,15 @@ const selectedCity = sessionStorage.getItem('selectedCity');
 const newCity = new Geolocation(selectedCity);
 const response = (newCity.getWeather())
   .then(function(data) {
-    const fetchCurrentWheater = new localStorageForHistory(data, selectedCity);
+    const fetchCurrentWeather = new localStorageForHistory(data, selectedCity);
     
-    fetchCurrentWheater.fetchAll();
-    fetchCurrentWheater.addLocalStorage();
+    fetchCurrentWeather.fetchAll();
+    fetchCurrentWeather.addLocalStorage();
     
     
   });
   
-  class CurrentWheater {
+  class CurrentWeather {
   constructor(response, cityName) {
     this.temperatureCelsius = response.current.temperature_2m;
     this.temperatureFahrenheit = this.#CToF(this.temperatureCelsius);
@@ -70,7 +70,7 @@ const response = (newCity.getWeather())
     this.humidity = response.current.relative_humidity_2m;
 };
 
-  selector = document.querySelector('#current-wheater-container');
+  selector = document.querySelector('#current-weather-container');
 
   #CToF (celsium) {
     return (celsium * 9 / 5 + 32).toFixed(1);
@@ -136,13 +136,13 @@ const response = (newCity.getWeather())
     }
 };
 
-class localStorageForHistory extends CurrentWheater {
+class localStorageForHistory extends CurrentWeather {
   constructor(response, cityName) {
     super(response, cityName);
   };
 
   addLocalStorage() {
-    const historicalTime = JSON.parse(localStorage.getItem('WheaterHistory')) || [];
+    const historicalTime = JSON.parse(localStorage.getItem('weatherHistory')) || [];
     historicalTime.push({
 //TODO replace time formatting
 //TODO add autoupdater
@@ -152,7 +152,7 @@ class localStorageForHistory extends CurrentWheater {
       'F' : this.temperatureFahrenheit,
     });
 
-    localStorage.setItem('WheaterHistory', JSON.stringify(historicalTime));
+    localStorage.setItem('weatherHistory', JSON.stringify(historicalTime));
     console.log(historicalTime);
     return historicalTime;
 
@@ -163,7 +163,7 @@ class localStorageForHistory extends CurrentWheater {
 class loadingCard {
   constructor() {
       this.card = this.addLoadingScreen();
-      this.selector = document.querySelector('#current-wheater-container');
+      this.selector = document.querySelector('#current-weather-container');
   
   }
 
@@ -179,7 +179,7 @@ class loadingCard {
       spinner.classList.add('spinner');
       const text = document.createElement('p');
       text.classList.add('loading-text');
-      text.textContent = 'Loading wheater...';
+      text.textContent = 'Loading weather...';
 
       loadingScreen.appendChild(spinner);
       loadingScreen.appendChild(text);
@@ -205,7 +205,7 @@ class loadingCard {
 
 const loader = new loadingCard();  
 
-//timer for loading wheater
+//timer for loading Weather
 const switchLoading = () => {
   loader.show();
   
