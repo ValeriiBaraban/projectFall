@@ -56,13 +56,8 @@ const response = (newCity.getWeather())
     
     fetchCurrentWheater.fetchAll();
     fetchCurrentWheater.addLocalStorage();
-    if(!data) {
-      loader.show();
-      loader.waitingDownload(selector);
-    } else {
-      loader.hide();
-    }
-
+    
+    
   });
   
   class CurrentWheater {
@@ -207,6 +202,16 @@ class loadingCard {
 
 const loader = new loadingCard();  
 
+const showHideCard = () => {
+  loader.show();
+  loader.waitingDownload();
+
+  setTimeout(() => {
+    loader.hide();
+  }, 5000);
+};
+
+showHideCard
 
 //download list of cities and writing to session storage
 const getZipCity = async () => {
