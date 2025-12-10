@@ -52,7 +52,9 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
- 
+  font-size: 22;
+  text-transform: uppercase;
+  text-transform: uppercase;
   color: #9ca3af;
   
 }
