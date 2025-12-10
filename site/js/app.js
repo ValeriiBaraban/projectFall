@@ -33,8 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
        const checkingFieldNameBoolean = checkingFieldName();
        
        if((checkingFieldNameBoolean)) {
-            sessionStorage.setItem('selectedCity', city);
-            sessionStorage.setItem('selectedCountry', country);
+            sessionStorage.setItem('selectedCity', cityField);
+            //sessionStorage.setItem('selectedCountry', country);
            // sessionStorage.setItem('zip', zip);
             window.location.href = '/site/page-main.html';
        };
