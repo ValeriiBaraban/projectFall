@@ -25,7 +25,7 @@ body {
 
 .weather-card .hidden{
     background: #142744;
-    color: aliceblue;
+    color: rgb(10, 126, 228);
     padding: 24px 28px;
     border-radius: 16px;
     width: 320px;
