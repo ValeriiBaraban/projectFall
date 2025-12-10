@@ -127,6 +127,8 @@ const response = (newCity.getWeather())
     
     
     fetchAll() {
+  console.trace('RENDER WEATHER CARD', data);
+
         this.addLocation();
         this.addTime();
         this.addTemp();
@@ -161,14 +163,14 @@ class localStorageForHistory extends CurrentWheater {
 
 class loadingCard {
   constructor() {
-    this.card = this.addLoadingScreen();
+      this.card = this.addLoadingScreen();
+      this.selector = document.querySelector('#current-wheater-container');
+  
   }
 
-    selector = document.querySelector('#current-wheater-container');
-
-
-  waitingDownload(selector) {
-    selector.classList.add('weather-card', 'hidden');
+  waitingDownload() {
+    
+      this.selector.classList.add('weather-card', 'hidden');
   };
 
   addLoadingScreen() {
@@ -177,6 +179,7 @@ class loadingCard {
       const spinner = document.createElement('div');
       spinner.classList.add('spinner');
       const text = document.createElement('p');
+      text.classList.add('loading-text');
       text.textContent = 'Loading wheater...';
 
       loadingScreen.appendChild(spinner);
@@ -190,11 +193,12 @@ class loadingCard {
 
     show() {
       this.card.classList.remove('hidden');
-
+      this.selector.classList.add('hidden');
     };
 
     hide() {
       this.card.classList.add('hidden');
+      this.selector.classList.remove('hidden')
     };
     
   };
@@ -202,16 +206,16 @@ class loadingCard {
 
 const loader = new loadingCard();  
 
-const showHideCard = () => {
+//timer for loading wheater
+const switchLoading = () => {
   loader.show();
-  loader.waitingDownload(loader.selector);
-
+  
   setTimeout(() => {
     loader.hide();
   }, 5000);
-};
+}
 
-showHideCard
+switchLoading();
 
 //download list of cities and writing to session storage
 const getZipCity = async () => {
