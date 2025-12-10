@@ -211,7 +211,7 @@ const showHideCard = () => {
   }, 5000);
 };
 
-showHideCard
+showHideCard();
 
 //download list of cities and writing to session storage
 const getZipCity = async () => {
