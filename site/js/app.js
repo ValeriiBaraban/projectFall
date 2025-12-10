@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelector('form').setAttribute('novalidate', '');
     
     //add animation to Wheater
-    document.querySelector('h2').classList.add('loading-text');
+    document.querySelector('h1').classList.add('loading-text');
     
     // Get the error message container
     const error = document.querySelector('.alert-text');
