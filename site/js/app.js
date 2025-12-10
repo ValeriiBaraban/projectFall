@@ -5,11 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Get the error message container
     const error = document.querySelector('.alert-text');
  
-    //errors for field: Name
+    //errors for field: City
     const cityError = document.querySelector('#city-error');
     const cityField = document.querySelector('#cities');
-    // nameField.setAttribute('required', '');
-    // nameField.setAttribute('minlength', 3);
+    
 
     // checking City
     const checkingFieldName = () => {
