@@ -48,7 +48,7 @@ class Geolocation {
 
 
 const dataNow = getTime();
-const selectedCity = sessionStorage.getItem('selectedCity').toLowerCase();
+const selectedCity = sessionStorage.getItem('selectedCity');
 const newCity = new Geolocation(selectedCity);
 const response = (newCity.getWeather())
   .then(function(data) {
