@@ -23,16 +23,6 @@ body {
 
 }
 
-.weather-card {
-    background: #142744;
-    color: rgb(10, 126, 228);
-    padding: 24px 28px;
-    border-radius: 16px;
-    width: 320px;
-    box-sizing: border-box;
-    display: none;
-
-}
 
 .country {
   margin: 0;
