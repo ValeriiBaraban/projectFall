@@ -24,7 +24,7 @@ body {
 
 }
 
-.weather-card .hidden{
+.weather-card {
     background: #142744;
     color: rgb(10, 126, 228);
     padding: 24px 28px;
