@@ -56,7 +56,11 @@ const response = (newCity.getWeather())
     
     fetchCurrentWheater.fetchAll();
     fetchCurrentWheater.addLocalStorage();
-
+    if(!fetchCurrentWheater.addLocalStorage()) {
+      loader.show();
+    } else {
+      loader.hide();
+    }
 
   });
   
@@ -121,6 +125,8 @@ const response = (newCity.getWeather())
         humidity.classList = 'humidity';
         humidity.textContent = `Humidity ${this.humidity} %`;
         this.selector.appendChild(humidity);
+        
+        return humidity;
     };
     
     
@@ -198,7 +204,7 @@ class loadingCard {
 const loader = new loadingCard();  
 
 
-
+//download list of cities and writing to session storage
 const getZipCity = async () => {
   const res = await fetch('/site/delivery_zipcode_physical_city.json');
 
