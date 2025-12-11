@@ -269,5 +269,5 @@ const finder = () => {
     const result = search.find(sessionStorage.getItem('input'));
     return result
 }
-  console.log(finder);
+  console.log(finder());
 });
