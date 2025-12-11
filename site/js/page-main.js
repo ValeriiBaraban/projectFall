@@ -236,7 +236,7 @@ const searchInFile = async () => {
 
   console.log('zip', data);
 }
-console.log(searchInFile());
+console.log(await searchInFile());
 
 
 const listOfCities = ['Seattle', 'Shoreline', 'Bothel', 'Honolulu']
