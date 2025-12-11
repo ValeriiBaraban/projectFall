@@ -52,7 +52,7 @@ const normalizeCityName = () => {
     return normalizedStr;
 }
 
-const newCity = new Geolocation(normalizeCityName);
+const newCity = new Geolocation(normalizeCityName());
 const response = (newCity.getWeather())
   .then(function(data) {
     const fetchCurrentWheater = new localStorageForHistory(data, selectedCity);
