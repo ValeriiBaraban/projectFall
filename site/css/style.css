@@ -64,7 +64,6 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.08em;
 
-  /* 🔥 Градиент */
   background: linear-gradient(
     90deg,
     #6b7280,
@@ -79,19 +78,16 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
 
-  /* Анимации */
   animation:
     gradientMove 3s linear infinite,
     glowPulse 2.2s ease-in-out infinite;
 }
 
-/* Бегущий градиент */
 @keyframes gradientMove {
   0% { background-position: 0% 50%; }
   100% { background-position: 200% 50%; }
 }
 
-/* Мягкая пульсация "сияния" */
 @keyframes glowPulse {
   0%, 100% {
     opacity: 0.55;

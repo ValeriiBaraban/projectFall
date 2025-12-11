@@ -47,7 +47,7 @@ class Geolocation {
 }
 
 
-const dataNow = getTime();
+//const dataNow = getTime();
 const selectedCity = sessionStorage.getItem('selectedCity');
 const newCity = new Geolocation(selectedCity);
 const response = (newCity.getWeather())
@@ -168,7 +168,6 @@ class loadingCard {
   }
 
   waitingDownload() {
-    
       this.selector.classList.add('weather-card', 'hidden');
   };
 
