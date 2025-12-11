@@ -239,7 +239,7 @@ const searchInFile = async () => {
 const sets = [... new Set(data.map((item) => item.physical_city))];
 console.log(sets);
 }
-
+searchInFile();
 
 const listOfCities = ['Seattle', 'Shoreline', 'Bothel', 'Honolulu']
 
