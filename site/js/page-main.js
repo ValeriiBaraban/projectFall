@@ -236,10 +236,10 @@ const searchInFile = async () => {
 
 //   console.log('zip', getZip);
 //   console.log('city', getCity);
-const sets = [new Set(data.map((item) => item.physical_city))];
-console.log(sets);
+  const citySets = [... new Set(data.map((item) => item.physical_city))];
+  return citySets;
 }
-searchInFile();
+console.log(searchInFile());
 
 const listOfCities = ['Seattle', 'Shoreline', 'Bothel', 'Honolulu']
 
