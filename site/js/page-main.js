@@ -267,7 +267,7 @@ const search = inputSearch(listOfCities);
 const finder = () => {
     const search = inputSearch(listOfCities);
     const result = search.find(sessionStorage.getItem('input'));
-    return sessionStorage.setItem('selectedCity', result);
+    return result
 }
-  finder();
+  console.log(finder);
 });
