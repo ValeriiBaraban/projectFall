@@ -259,7 +259,7 @@ const inputSearch = (listOfCities) => {
 };
 
 
-const search = inputSearch(listOfCities);
+//const search = inputSearch(listOfCities);
 
  
 //console.log(search.find('san'));
@@ -269,5 +269,7 @@ const finder = () => {
     const result = search.find(sessionStorage.getItem('input'));
     return result
 }
-  console.log(finder());
+  console.log('finder', finder());
+
+
 });
