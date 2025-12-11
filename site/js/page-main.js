@@ -261,7 +261,7 @@ const inputSearch = (listOfCities) => {
 
 const search = inputSearch(listOfCities);
 
-console.log(search.find('hon'));
+console.log(search.find('san'));
 
 
   
