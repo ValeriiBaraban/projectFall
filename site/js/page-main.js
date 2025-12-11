@@ -46,10 +46,13 @@ class Geolocation {
     }
 }
 
+const normalizeCityName = () => {
+    const selectedCity = sessionStorage.getItem('selectedCity'); //get input str from index.html
+    const normalizedStr = selectedCity.charAt(0).toUpperCase() + selectedCity.slice(1).toLowerCase();
+    return normalizedStr;
+}
 
-//const dataNow = getTime();
-const selectedCity = sessionStorage.getItem('selectedCity');
-const newCity = new Geolocation(selectedCity);
+const newCity = new Geolocation(normalizeCityName);
 const response = (newCity.getWeather())
   .then(function(data) {
     const fetchCurrentWheater = new localStorageForHistory(data, selectedCity);
