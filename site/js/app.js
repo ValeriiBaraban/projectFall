@@ -31,12 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
 //listen input field for search engine
-if(checkingFieldName()) {
+
     document.addEventListener('input', (input) => {
     const inputFeild = document.querySelector('#cities');
     sessionStorage.setItem('input', inputFeild.value);
     console.log(inputFeild.value);
-})};
+});
 
 // Validation runs when the button is clicked
     const submit = document.querySelector('.btn-primary');
