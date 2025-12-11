@@ -236,6 +236,6 @@ const searchInFile = async () => {
 
   console.log('zip', getZip);
 }
-searchInFile();
+console.log(searchInFile());
 
 });
