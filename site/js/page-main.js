@@ -214,7 +214,7 @@ const switchLoading = () => {
   
   setTimeout(() => {
     loader.hide();
-  }, 5000);
+  }, 7000);
 }
 
 switchLoading();

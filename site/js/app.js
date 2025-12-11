@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cityError = document.querySelector('#city-error');
     const cityField = document.querySelector('#cities');
     
+//TODO добавить проверку чтоб цифры нельзя было юзать
 
     // checking City
     const checkingFieldName = () => {
