@@ -231,11 +231,35 @@ const getZipCity = async () => {
 const searchInFile = async () => {
   await getZipCity();
   const data = JSON.parse(sessionStorage.getItem('zipCity'));
-  const getZip = data.filter((item) => item.physical_city.toLowerCase() === sessionStorage.getItem('selectedCity').toLowerCase());
+  //const getZip = data.filter((item) => item.physical_city.toLowerCase() === sessionStorage.getItem('selectedCity').toLowerCase());
   //const getCity = data.filter((item) => item.delivery_zipcode === sessionStorage.getItem('zip'));
 
-  console.log('zip', getZip);
+  console.log('zip', data);
 }
-searchInFile();
+console.log(searchInFile());
 
+
+const listOfCities = ['Seattle', 'Shoreline', 'Bothel', 'Honolulu']
+
+const inputSearch = (listOfCities) => {
+  const city  = listOfCities;
+
+  const find = (query) => {
+    if(!query) {
+      return city = [];
+    };
+     return city
+      .filter(listOfCities => listOfCities.toLowerCase().startsWith(query))
+    };
+
+      return { find };
+};
+
+
+const search = inputSearch(listOfCities);
+
+console.log(search.find('ho'));
+
+
+  
 });
