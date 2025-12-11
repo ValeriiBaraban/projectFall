@@ -239,4 +239,3 @@ const searchInFile = async () => {
 searchInFile();
 
 });
-searchInFile();
