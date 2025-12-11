@@ -231,7 +231,7 @@ const getZipCity = async () => {
 const searchInFile = async () => {
   await getZipCity();
   const data = JSON.parse(sessionStorage.getItem('zipCity'));
-  const getZip = data.filter((item) => item.physical_city.toLowerCase() === sessionStorage.getItem('selectedCity').toLowerCase());
+  const getZip = data.filter((item) => item.physical_city.toLowerCase() === sessionStorage.getItem(normalizeCityName()).toLowerCase());
   //const getCity = data.filter((item) => item.delivery_zipcode === sessionStorage.getItem('zip'));
 
   console.log('zip', getZip);
@@ -239,4 +239,3 @@ const searchInFile = async () => {
 searchInFile();
 
 });
-searchInFile();
