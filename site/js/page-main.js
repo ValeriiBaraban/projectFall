@@ -239,9 +239,9 @@ const searchInFile = async () => {
   const citySets = [... new Set(data.map((item) => item.physical_city))];
   return citySets;
 }
-console.log(searchInFile());
 
-const listOfCities = ['Seattle', 'Shoreline', 'Bothel', 'Honolulu']
+
+const listOfCities = await searchInFile();
 
 const inputSearch = (listOfCities) => {
   const city  = listOfCities;
