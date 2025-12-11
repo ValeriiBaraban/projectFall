@@ -156,7 +156,7 @@ class localStorageForHistory extends CurrentWheater {
     });
 
     localStorage.setItem('WheaterHistory', JSON.stringify(historicalTime));
-    console.log(historicalTime);
+    console.log('historicalTime:', historicalTime);
     return historicalTime;
 
 
@@ -228,7 +228,7 @@ const getZipCity = async () => {
 };
 
 
-const searchInFile = async () => {
+const getCityList = async () => {
   await getZipCity();
   const data = await JSON.parse(sessionStorage.getItem('zipCity'));
 //   const getZip = data.filter((item) => item.physical_city.toLowerCase() === sessionStorage.getItem('selectedCity').toLowerCase());
@@ -241,7 +241,7 @@ const searchInFile = async () => {
 }
 
 
-const listOfCities = await searchInFile();
+const listOfCities = await getCityList();
 console.log('list', listOfCities);
 
 const inputSearch = (listOfCities) => {
@@ -261,7 +261,7 @@ const inputSearch = (listOfCities) => {
 
 const search = inputSearch(listOfCities);
 
-console.log(search.find('ho'));
+console.log(search.find('hon'));
 
 
   
