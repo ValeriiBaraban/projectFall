@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const cityError = document.querySelector('#city-error');
     const cityField = document.querySelector('#cities');
 
+    //listen input field for search engine
     document.addEventListener('input', (input) => {
     const inputFeild = document.querySelector('#cities');
-    console.log(inputFeild.value);
 })
     
 //TODO добавить проверку чтоб цифры нельзя было юзать
@@ -45,6 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
             sessionStorage.setItem('selectedCity', cityField.value);
             //sessionStorage.setItem('selectedCountry', country);
            // sessionStorage.setItem('zip', zip);
+            sessionStorage.setItem('input', inputFeild.value);
+
             window.location.href = '/site/page-main.html';
        };
 
