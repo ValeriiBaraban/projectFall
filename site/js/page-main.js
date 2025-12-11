@@ -263,6 +263,9 @@ const search = inputSearch(listOfCities);
 
 console.log(search.find('san'));
 
-
+document.addEventListener('input', (input) => {
+    const inputFeild = document.querySelector('#cities');
+    console.log(inputFeild.value);
+})
   
 });

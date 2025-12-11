@@ -11,6 +11,11 @@ document.addEventListener('DOMContentLoaded', () => {
     //errors for field: City
     const cityError = document.querySelector('#city-error');
     const cityField = document.querySelector('#cities');
+
+    document.addEventListener('input', (input) => {
+    const inputFeild = document.querySelector('#cities');
+    console.log(inputFeild.value);
+})
     
 //TODO добавить проверку чтоб цифры нельзя было юзать
 
