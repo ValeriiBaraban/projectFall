@@ -261,11 +261,13 @@ const inputSearch = (listOfCities) => {
 
 const search = inputSearch(listOfCities);
 
-console.log(search.find('san'));
+ 
+//console.log(search.find('san'));
 
-document.addEventListener('input', (input) => {
-    const inputFeild = document.querySelector('#cities');
-    console.log(inputFeild.value);
-})
-  
+const finder = () => {
+    const search = inputSearch(listOfCities);
+    const result = search.find(sessionStorage.getItem('input'));
+    return sessionStorage.setItem('selectedCity', result);
+}
+  finder();
 });
