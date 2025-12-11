@@ -234,8 +234,9 @@ const searchInFile = async () => {
   const getZip = data.filter((item) => item.physical_city.toLowerCase() === sessionStorage.getItem('selectedCity').toLowerCase());
   //const getCity = data.filter((item) => item.delivery_zipcode === sessionStorage.getItem('zip'));
 
-  console.log(getZip);
+  console.log('zip', getZip);
 }
 searchInFile();
 
 });
+searchInFile();
