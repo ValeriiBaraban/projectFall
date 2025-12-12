@@ -231,11 +231,6 @@ const getZipCity = async () => {
 const getCityList = async () => {
   await getZipCity();
   const data = await JSON.parse(sessionStorage.getItem('zipCity'));
-//   const getZip = data.filter((item) => item.physical_city.toLowerCase() === sessionStorage.getItem('selectedCity').toLowerCase());
-//   const getCity = data.filter((item) => item.delivery_zipcode === sessionStorage.getItem('zip'));
-
-//   console.log('zip', getZip);
-//   console.log('city', getCity);
   const citySets = [... new Set(data.map((item) => item.physical_city))];
   return citySets;
 }
@@ -248,12 +243,11 @@ const inputSearch = (listOfCities) => {
   const city  = listOfCities;
 
   const find = (query) => {
-    const normalizedQuery = query.toLowerCase().trim();
-    if(!normalizedQuery) {
+    if(!query) {
       return [];
     };
      return city
-      .filter(listOfCities => listOfCities.toLowerCase().startsWith(normalizedQuery))
+      .filter(listOfCities => listOfCities.toLowerCase().startsWith(query))
     };
 
       return { find };

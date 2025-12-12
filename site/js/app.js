@@ -4,16 +4,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     //add animation to Wheater
     document.querySelector('h1').classList.add('loading-text');
-    
-    // Get the error message container
-    const error = document.querySelector('.alert-text');
  
     //errors for field: City
     const cityError = document.querySelector('#city-error');
     const cityField = document.querySelector('#cities');
 
-    
-    
 //TODO добавить проверку чтоб цифры нельзя было юзать
 
     // checking City
