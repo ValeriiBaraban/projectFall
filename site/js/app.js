@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('input', (input) => {
     const inputFeild = document.querySelector('#cities');
     sessionStorage.setItem('input', inputFeild.value);
-    console.log(inputFeild.value);
+    console.log('inputFeild.value', inputFeild.value);
 });
 
 // Validation runs when the button is clicked
