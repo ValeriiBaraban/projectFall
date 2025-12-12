@@ -235,9 +235,9 @@ const getCityList = async () => {
   return citySets;
 }
 
+const listOfCities = getCityList();
 
-const inputSearch = async (listOfCities) => {
-  const listOfCities = await getCityList();
+const inputSearch = (listOfCities) => {
 
   const find = (query) => {
     if(!query) {
