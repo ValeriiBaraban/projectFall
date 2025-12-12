@@ -259,7 +259,7 @@ const inputSearch = (listOfCities) => {
 const finder = () => {
     const search = inputSearch(listOfCities);
     const input = document.querySelector('cities');
-    const result = search.find(input.value);//(sessionStorage.getItem('input'));
+    const result = search.find(input);//(sessionStorage.getItem('input'));
     return result
 }
   console.log('finder', finder());
