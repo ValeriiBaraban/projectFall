@@ -227,7 +227,7 @@ const getZipCity = async () => {
   sessionStorage.setItem('zipCity', JSON.stringify(file));
 };
 
-
+//get list of cities
 const getCityList = async () => {
   await getZipCity();
   const data = await JSON.parse(sessionStorage.getItem('zipCity'));
@@ -236,17 +236,14 @@ const getCityList = async () => {
 }
 
 
-const listOfCities = await getCityList();
-console.log('list', listOfCities);
-
-const inputSearch = (listOfCities) => {
-  const city  = listOfCities;
+const inputSearch = async (listOfCities) => {
+  const listOfCities = await getCityList();
 
   const find = (query) => {
     if(!query) {
       return [];
     };
-     return city
+     return listOfCities
       .filter(listOfCities => listOfCities.toLowerCase().startsWith(query))
     };
 
@@ -261,10 +258,15 @@ const inputSearch = (listOfCities) => {
 
 const finder = () => {
     const search = inputSearch(listOfCities);
-    const result = search.find(sessionStorage.getItem('input'));
+    const input = document.querySelector('cities');
+    const result = search.find(input.value);//(sessionStorage.getItem('input'));
     return result
 }
   console.log('finder', finder());
+
+
+
+
 
 
 });
