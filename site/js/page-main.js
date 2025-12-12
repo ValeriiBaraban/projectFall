@@ -248,11 +248,12 @@ const inputSearch = (listOfCities) => {
   const city  = listOfCities;
 
   const find = (query) => {
-    if(!query) {
-      return city = [];
+    const normalizedQuery = query.toLowerCase().trim();
+    if(!normalizedQuery) {
+      return [];
     };
      return city
-      .filter(listOfCities => listOfCities.toLowerCase().startsWith(query))
+      .filter(listOfCities => listOfCities.toLowerCase().startsWith(normalizedQuery))
     };
 
       return { find };
