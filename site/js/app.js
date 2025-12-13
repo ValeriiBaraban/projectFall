@@ -33,6 +33,56 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('inputFeild.value', inputFeild.value);
 });
 
+//download list of cities and writing it to session storage
+const getZipCity = async () => {
+  const res = await fetch('/site/delivery_zipcode_physical_city.json');
+
+  const file = await res.json();
+  sessionStorage.setItem('zipCity', JSON.stringify(file));
+};
+
+//get list of cities
+const getCityList = async () => {
+  await getZipCity();
+  const data = await JSON.parse(sessionStorage.getItem('zipCity'));
+  const citySets = [... new Set(data.map((item) => item.physical_city))];
+  return citySets;
+}
+
+const listOfCities = getCityList();
+
+const inputSearch = (listOfCities) => {
+
+  const find = (query) => {
+    if(!query) {
+      return [];
+    };
+     return listOfCities
+      .filter(listOfCities => listOfCities.toLowerCase().startsWith(query))
+    };
+
+      return { find };
+};
+
+
+//const search = inputSearch(listOfCities);
+
+ 
+//console.log(search.find('san'));
+
+const finder = () => {
+    const search = inputSearch(listOfCities);
+    const input = document.querySelector('cities');
+    const result = search.find(input);//(sessionStorage.getItem('input'));
+    return result
+}
+  console.log('finder', finder());
+
+
+
+
+
+
 // Validation runs when the button is clicked
     const submit = document.querySelector('.btn-primary');
     submit.addEventListener('click', function(e) {
