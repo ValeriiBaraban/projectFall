@@ -27,10 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //listen input field for search engine
 
-    document.addEventListener('input', (input) => {
-    const inputFeild = document.querySelector('#cities');
-    sessionStorage.setItem('input', inputFeild.value);
-    console.log('inputFeild.value', inputFeild.value);
+    document.addEventListener('input', (e) => {
+    const inputFeild = e.target.value
+    sessionStorage.setItem('input', inputFeild);
+    console.log('inputFeild.value', inputFeild);
 });
 
 //download list of cities and writing it to session storage
