@@ -57,7 +57,6 @@ const inputSearch = (listOfCities) => {
      return listOfCities
       .filter(listOfCities => listOfCities.toLowerCase().startsWith(q))
     };
-      console.log({find});
       return { find };
 };
 
@@ -69,19 +68,14 @@ const finder = () => {
         const inputField = filteredValue;
         sessionStorage.setItem('input', inputField);
         console.log('inputFeild.value', inputField);
-        //const input = document.querySelector('#cities');
         const result = search.find(inputField);
-        console.log('result', result);
+
+        console.log('result', result.slice(0, 10));
         return result
     });
 };
 
   console.log('finder', finder());
-
-
-
-
-
 
 // Validation runs when the button is clicked
     const submit = document.querySelector('.btn-primary');

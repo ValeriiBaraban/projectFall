@@ -108,6 +108,7 @@ const response = (newCity.getWeather())
     const city = document.createElement('h3');
 
     country.classList = 'country';
+    
     country.textContent = this.country;
 
     city.classList = 'city';
