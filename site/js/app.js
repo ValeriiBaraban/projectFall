@@ -71,15 +71,16 @@ const finder = () => {
     const search = inputSearch(listOfCities);
 
     cityField.addEventListener('input', (e) => {
-    const inputFeild = e.target.value
-    sessionStorage.setItem('input', inputFeild);
-    console.log('inputFeild.value', inputFeild);
-});
-    //const input = document.querySelector('#cities');
-    const result = search.find(inputFeild); //(sessionStorage.getItem('input'));//search.find(input);//(sessionStorage.getItem('input'));
-    console.log('result', result);
-    return result
-}
+        const inputField = e.target.value
+        sessionStorage.setItem('input', inputField);
+        console.log('inputFeild.value', inputField);
+        //const input = document.querySelector('#cities');
+        const result = search.find(inputField); //(sessionStorage.getItem('input'));//search.find(input);//(sessionStorage.getItem('input'));
+        console.log('result', result);
+        return result
+    });
+};
+
   console.log('finder', finder());
 
 
