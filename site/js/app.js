@@ -64,13 +64,19 @@ const inputSearch = (listOfCities) => {
 
 const search = inputSearch(listOfCities);
 
+ 
+//console.log(search.find('san'));
+
 const finder = () => {
     const search = inputSearch(listOfCities);
 
     cityField.addEventListener('input', (e) => {
         const inputField = e.target.value
         sessionStorage.setItem('input', inputField);
-        const result = search.find(inputField);
+        console.log('inputFeild.value', inputField);
+        //const input = document.querySelector('#cities');
+        const result = search.find(inputField); //(sessionStorage.getItem('input'));//search.find(input);//(sessionStorage.getItem('input'));
+        console.log('result', result);
         return result
     });
 };
