@@ -54,11 +54,12 @@ const listOfCities = getCityList();
 const inputSearch = (listOfCities) => {
 
   const find = (query) => {
-    if(!query) {
+    const q = (query || '').trim().toLowerCase();
+    if(!q) {
       return [];
     };
      return listOfCities
-      .filter(listOfCities => listOfCities.toLowerCase().startsWith(query))
+      .filter(listOfCities => listOfCities.toLowerCase().startsWith(q))
     };
 
       return { find };
@@ -72,8 +73,10 @@ const search = inputSearch(listOfCities);
 
 const finder = () => {
     const search = inputSearch(listOfCities);
+    console.log('search ', search);
     const input = document.querySelector('cities');
     const result = search.find(input);//(sessionStorage.getItem('input'));
+    console.log('result', result);
     return result
 }
   console.log('finder', finder());
