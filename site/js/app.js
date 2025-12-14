@@ -72,7 +72,7 @@ const finder = () => {
         const result = search.find(inputField);
           const datalist = document.querySelector('#cities-list');
 
-            result.slice(0, 10).forEach(city => {
+            result.slice(0, 5).forEach(city => {
                 const option = document.createElement('option');
                 option.value = city;
                 datalist.appendChild(option);
