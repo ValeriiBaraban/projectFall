@@ -75,7 +75,7 @@ const finder = () => {
     const search = inputSearch(listOfCities);
     console.log('search ', search);
     const input = document.querySelector('cities');
-    const result = search.find(input);//(sessionStorage.getItem('input'));
+    const result = (sessionStorage.getItem('input'));//search.find(input);//(sessionStorage.getItem('input'));
     console.log('result', result);
     return result
 }
