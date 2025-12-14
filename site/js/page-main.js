@@ -27,7 +27,7 @@ class Geolocation {
         this.minutely = '&minutely_15=';
     }
 
-    async getCoordinates(country='United States') {
+    async getCoordinates() {
         const res = await fetch(this.geoUrl);
         const data = await res.json();
         const country = data.results[0].country;
