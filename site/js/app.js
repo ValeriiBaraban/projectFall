@@ -65,7 +65,8 @@ const finder = () => {
     const search = inputSearch(listOfCities);
 
     cityField.addEventListener('input', (e) => {
-        const inputField = e.target.value
+        const filteredValue = e.target.value.replace(/[^\p{L}\s-]/gu, '');
+        const inputField = filteredValue;
         sessionStorage.setItem('input', inputField);
         console.log('inputFeild.value', inputField);
         //const input = document.querySelector('#cities');
