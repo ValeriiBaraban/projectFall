@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     //errors for field: City
     const cityError = document.querySelector('#city-error');
     const cityField = document.querySelector('#cities');
+    const datalist = document.querySelector('#cities-list');
+
 
 //TODO добавить проверку чтоб цифры нельзя было юзать
 
@@ -68,10 +70,12 @@ const finder = () => {
         const inputField = filteredValue;
         sessionStorage.setItem('input', inputField);
         const result = search.find(inputField);
-        result.slice(0, 10).forEach(city => {
-            const option = document.createElement('option');
-            option.value = city;
-            datalist.appendChild(option);
+          const datalist = document.querySelector('#cities-list');
+
+            result.slice(0, 10).forEach(city => {
+                const option = document.createElement('option');
+                option.value = city;
+                datalist.appendChild(option);
       });
 
         console.log('result', result.slice(0, 10));
