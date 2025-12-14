@@ -71,6 +71,7 @@ const finder = () => {
         sessionStorage.setItem('input', inputField);
         const result = search.find(inputField);
           const datalist = document.querySelector('#cities-list');
+                datalist.innerHTML = '';
 
             result.slice(0, 5).forEach(city => {
                 const option = document.createElement('option');
