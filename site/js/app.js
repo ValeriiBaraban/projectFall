@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     // turn off browser validation
     document.querySelector('form').setAttribute('novalidate', '');
     
@@ -27,11 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //listen input field for search engine
 
-    document.addEventListener('input', (e) => {
-    const inputFeild = e.target.value
-    sessionStorage.setItem('input', inputFeild);
-    console.log('inputFeild.value', inputFeild);
-});
+    
 
 //download list of cities and writing it to session storage
 const getZipCity = async () => {
@@ -39,17 +35,17 @@ const getZipCity = async () => {
 
   const file = await res.json();
   sessionStorage.setItem('zipCity', JSON.stringify(file));
+  return file;
 };
 
 //get list of cities
 const getCityList = async () => {
   await getZipCity();
   const data = await JSON.parse(sessionStorage.getItem('zipCity'));
-  const citySets = [... new Set(data.map((item) => item.physical_city))];
-  return citySets;
+  return [... new Set(data.map((item) => item.physical_city))];
 }
 
-const listOfCities = getCityList();
+const listOfCities = await getCityList();
 
 const inputSearch = (listOfCities) => {
 
@@ -73,9 +69,14 @@ const search = inputSearch(listOfCities);
 
 const finder = () => {
     const search = inputSearch(listOfCities);
-    console.log('search ', search);
-    const input = document.querySelector('#cities');
-    const result = (sessionStorage.getItem('input'));//search.find(input);//(sessionStorage.getItem('input'));
+
+    cityField.addEventListener('input', (e) => {
+    const inputFeild = e.target.value
+    sessionStorage.setItem('input', inputFeild);
+    console.log('inputFeild.value', inputFeild);
+});
+    //const input = document.querySelector('#cities');
+    const result = search.find(inputFeild); //(sessionStorage.getItem('input'));//search.find(input);//(sessionStorage.getItem('input'));
     console.log('result', result);
     return result
 }
