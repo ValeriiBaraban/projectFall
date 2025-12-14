@@ -67,8 +67,12 @@ const finder = () => {
         const filteredValue = e.target.value.replace(/[^\p{L}\s-]/gu, '');
         const inputField = filteredValue;
         sessionStorage.setItem('input', inputField);
-        console.log('inputFeild.value', inputField);
         const result = search.find(inputField);
+        result.slice(0, 10).forEach(city => {
+            const option = document.createElement('option');
+            option.value = city;
+            datalist.appendChild(option);
+      });
 
         console.log('result', result.slice(0, 10));
         return result

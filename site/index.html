@@ -20,7 +20,7 @@
     <div class="container container-text">
       <h1>Wheater</h1>
 
-      <form id="connect-form" novalidate>
+      <form id="search-form" novalidate>
         <div class="form-group" >
           <label for="country">Select a country</label>
           <input readonly
@@ -43,14 +43,13 @@
           <label for="city">Select a City</label>
           <input
             id="cities"
-            list="list-cities"
+            list="cities-list"
             class="form-control"
             type="text"
             name="city"
             placeholder="Start type..."
           />
-          
-          
+          <datalist id="cities-list"></datalist>
           <small id="city-error" class="alert-text"></small>
         </div>
 
