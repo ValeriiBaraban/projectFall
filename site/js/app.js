@@ -61,7 +61,7 @@ const inputSearch = (listOfCities) => {
      return listOfCities
       .filter(listOfCities => listOfCities.toLowerCase().startsWith(q))
     };
-
+      console.log({find});
       return { find };
 };
 
