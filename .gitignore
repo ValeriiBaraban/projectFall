@@ -6,3 +6,4 @@ app.js.back
 terraform.tfstate
 terraform.tfstate.backup
 .terraform.tfstate.lock.info
+.vscode
