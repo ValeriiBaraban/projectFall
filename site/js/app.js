@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // checking City
   const checkingFieldName = () => {
     if (cityField.value.length === 0) {
-      cityError.textContent = "field requared";
+      cityError.textContent = "Field required";
       return false;
     } else if (cityField.value.length < 3) {
       cityError.textContent = "min 3 symbols";
