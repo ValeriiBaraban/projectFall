@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", async () => {
   // turn off browser validation
-  document.querySelector("#search-form").setAttribute("novalidate", "");
+  const form = document.querySelector("#search-form");
+  if (form) {
+    form.setAttribute("novalidate", "");
+  }
 
   //add animation to Wheater
   document.querySelector("h1").classList.add("loading-text");
