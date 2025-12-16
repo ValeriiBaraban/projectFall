@@ -51,16 +51,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   const normalizeCityName = () => {
     try {
       const selectedCity = sessionStorage.getItem("selectedCity");
-    if(!selectedCity) {
-      throw new Error('selected sity error')
-    }
-      const normalizedStr =
+      if (!selectedCity) {
+        throw new Error("selected sity error");
+      }
+      return (
         selectedCity.charAt(0).toUpperCase() +
-        selectedCity.slice(1).toLowerCase();
-
-      return normalizedStr;
+        selectedCity.slice(1).toLowerCase()
+      );
     } catch (error) {
       console.error("normalizeCityName error:", error.message);
+      return "";
     }
   };
 
