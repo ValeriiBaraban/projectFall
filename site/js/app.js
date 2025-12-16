@@ -6,14 +6,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   //add animation to Wheater
-  document.querySelector("h1").classList.add("loading-text");
+  const animationForWheater = document.querySelector("h1");
+  if (animationForWheater) {
+    animationForWheater.classList.add("loading-text");
+  }
 
   //errors for field: City
   const cityError = document.querySelector("#city-error");
   const cityField = document.querySelector("#cities");
   const datalist = document.querySelector("#cities-list");
-
-  //TODO добавить проверку чтоб цифры нельзя было юзать
 
   // checking City
   const checkingFieldName = () => {
@@ -83,8 +84,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       return result;
     });
   };
-
-  console.log("finder", finder());
 
   // Validation runs when the button is clicked
   const submit = document.querySelector(".btn-primary");
