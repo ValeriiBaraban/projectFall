@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   //   window.location.href = 'index.html';
   //   return;
   // }
-  //TODO add 12 hours format
   function getTime() {
     const date = new Date();
     return [
@@ -157,8 +156,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       const historicalTime =
         JSON.parse(localStorage.getItem("WheaterHistory")) || [];
       historicalTime.push({
-        //TODO replace time formatting
-        //TODO add autoupdater
         city: this.cityName,
         time: `${this.lastUpdated[0]}:${this.lastUpdated[1]}`,
         C: this.temperatureCelsius,

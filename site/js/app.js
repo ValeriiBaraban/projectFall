@@ -63,12 +63,11 @@ if (window.__TEST__) {
         const result = search.find(inputField);
 
         //Prevent datalist glitch when user selects an option
-        if(result.includes(inputField)) {
-              datalist.innerHTML = ""; //del old results
-              return result;
+        if (result.includes(inputField)) {
+          datalist.innerHTML = ""; //del old results
+          return result;
         }
         datalist.innerHTML = ""; //del old results
-
 
         // Add  cities to the inline list
         result.slice(0, 7).forEach((city) => {
@@ -83,7 +82,6 @@ if (window.__TEST__) {
     };
     finder();
 
-    
     // Validation runs when the button is clicked
     const submit = document.querySelector(".btn-primary");
     submit.addEventListener("click", function (e) {
