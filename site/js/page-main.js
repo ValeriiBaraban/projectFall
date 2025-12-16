@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       return normalizedStr;
     } catch (error) {
-      console.error("normalizeCityName error:", error);
+      console.error("normalizeCityName error:", error.message);
     }
   };
 
