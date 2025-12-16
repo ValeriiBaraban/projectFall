@@ -49,11 +49,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   const normalizeCityName = () => {
-    const selectedCity = sessionStorage.getItem("selectedCity"); //get input str from index.html
-    const normalizedStr =
-      selectedCity.charAt(0).toUpperCase() +
-      selectedCity.slice(1).toLowerCase();
-    return normalizedStr;
+    try {
+      const selectedCity = sessionStorage.getItem("selectedCity");
+
+      const normalizedStr =
+        selectedCity.charAt(0).toUpperCase() +
+        selectedCity.slice(1).toLowerCase();
+
+      return normalizedStr;
+    } catch (error) {
+      console.error("normalizeCityName error:", error);
+    }
   };
 
   const newCity = new Geolocation(normalizeCityName());
