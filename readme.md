@@ -42,7 +42,7 @@ Opening `index.html` directly with `file://` will not work.
 ### Option 1: VS Code Live Server (Recommended)
 
 1. Open the project folder in **VS Code**
-2. Install the **Live Server** extension
+2. Install the **Live Server** extension (Ctrl+Shift+X)
 3. Right-click `index.html`
 4. Select **“Open with Live Server”**
 5. The app will open automatically in your browser
