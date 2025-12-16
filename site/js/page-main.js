@@ -59,7 +59,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         selectedCity.slice(1).toLowerCase()
       );
     } catch (error) {
-      console.error("normalizeCityName error:", error.message);
       return "";
     }
   };
