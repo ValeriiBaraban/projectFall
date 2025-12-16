@@ -51,7 +51,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   const normalizeCityName = () => {
     try {
       const selectedCity = sessionStorage.getItem("selectedCity");
-
+    if(!selectedCity) {
+      throw new Error('selected sity error')
+    }
       const normalizedStr =
         selectedCity.charAt(0).toUpperCase() +
         selectedCity.slice(1).toLowerCase();
