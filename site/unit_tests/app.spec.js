@@ -8,7 +8,7 @@ describe('Check input field', () => {
 })
 
 describe("inputSearch", () => {
-  it("returns matches", () => {
+  it("returns matches in list", () => {
     const search = window.inputSearch(["Seattle", "Shoreline", "Tacoma"]);
     expect(search.find("s")).toEqual(["Seattle", "Shoreline"]);
     expect(search.find("SE")).toEqual(["Seattle"]);
@@ -16,3 +16,4 @@ describe("inputSearch", () => {
 
 
 });
+
