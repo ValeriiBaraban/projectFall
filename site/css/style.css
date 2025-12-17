@@ -52,7 +52,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 22;
+  font-size: 25;
   text-transform: uppercase;
   text-transform: uppercase;
   color: #9ca3af;
@@ -60,7 +60,7 @@ body {
 }
 
 .loading-text {
-  font-size: 24px;
+  font-size: 28px;
   text-transform: uppercase;
   letter-spacing: 0.08em;
 
