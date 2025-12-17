@@ -18,6 +18,20 @@ if (window.__TEST__) {
     const cityError = document.querySelector("#city-error");
     const cityField = document.querySelector("#cities");
 
+    // checking City field
+    const checkingFieldName = () => {
+        if(cityField.value.length === 0) {
+            cityError.textContent = "field requared";
+            return false;
+        } else if(cityField.value.length < 3) {
+            cityError.textContent = "min 3 symbols";
+            return false;
+        } else {
+            cityError.textContent = "";
+            return true;
+        };
+    };
+
     // -------- Fetch and prepare city list --------
 
     // Load JSON with zip codes and cities and save it to sessionStorage
