@@ -20,16 +20,20 @@ if (window.__TEST__) {
 
     // checking City field
     const checkingFieldName = () => {
-        if(cityField.value.length === 0) {
-            cityError.textContent = "field requared";
-            return false;
-        } else if(cityField.value.length < 3) {
-            cityError.textContent = "min 3 symbols";
-            return false;
-        } else {
-            cityError.textContent = "";
-            return true;
-        };
+      if (cityField.value.length === 0) {
+        cityError.textContent = "Field required";
+        return false;
+      } else if (cityField.value.length < 3) {
+        cityError.textContent = "min 3 symbols";
+        return false;
+      } else if (!/^[A-Za-z\s\-]+$/.test(cityField.value)) {
+        cityError.textContent = "Only symbols";
+        return false;
+      }
+      else {
+        cityError.textContent = "";
+        return true;
+      }
     };
 
     // -------- Fetch and prepare city list --------
