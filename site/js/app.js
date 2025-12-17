@@ -13,13 +13,14 @@ if (window.__TEST__) {
       animationForWheater.classList.add("loading-text");
     }
 
+    // Elements for city error message and city input field
+
     const cityError = document.querySelector("#city-error");
     const cityField = document.querySelector("#cities");
 
-  
-    //listen input field for search engine
+    // -------- Fetch and prepare city list --------
 
-    //download list of cities and writing it to session storage
+    // Load JSON with zip codes and cities and save it to sessionStorage
     const getZipCity = async () => {
       const res = await fetch("/site/delivery_zipcode_physical_city.json");
 
@@ -28,25 +29,32 @@ if (window.__TEST__) {
       return file;
     };
 
-    //get list of cities
+    // Build a unique list of city names from the loaded data
+
     const getCityList = async () => {
       await getZipCity();
       const data = await JSON.parse(sessionStorage.getItem("zipCity"));
       return [...new Set(data.map((item) => item.physical_city))];
     };
 
+    // Get the list of cities (array of strings)
+
     const listOfCities = await getCityList();
 
     //inputSearch
+    // Create search helper for the list of cities
 
     const finder = () => {
       const search = inputSearch(listOfCities);
+      // Listen to input in the city field
 
       cityField.addEventListener("input", (e) => {
         const filteredValue = e.target.value.replace(/[^\p{L}\s-]/gu, "");
         const inputField = filteredValue;
         sessionStorage.setItem("input", inputField);
         const datalist = document.querySelector("#cities-list");
+        // Get matching cities
+
         const result = search.find(inputField);
 
         //Prevent datalist glitch when user selects an option
@@ -54,9 +62,12 @@ if (window.__TEST__) {
           datalist.innerHTML = ""; //del old results
           return result;
         }
+
+        // Clear previous suggestions
+
         datalist.innerHTML = ""; //del old results
 
-        // Add  cities to the inline list
+        // Add  cities to the inline list and slice to 7
         result.slice(0, 7).forEach((city) => {
           const option = document.createElement("option");
           option.value = city;
@@ -85,8 +96,12 @@ if (window.__TEST__) {
     });
   });
 }
+// -------- City search function --------
+
 const inputSearch = (listOfCities) => {
   const find = (query) => {
+    // Normalize query: trim spaces and convert to lowercase
+
     const q = (query || "").trim().toLowerCase();
     if (!q) {
       return [];
