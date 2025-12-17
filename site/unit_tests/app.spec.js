@@ -1,6 +1,6 @@
 describe('Check input field', () => {
         it('return [] when field is empty', () => {
-        const result = window.inputSearch(['S', 'Sa']);
+        const result = window.inputSearch(["Seattle", "Shoreline"]);
 
         expect(result.find('')).toEqual([]);
 
@@ -13,7 +13,4 @@ describe("inputSearch", () => {
     expect(search.find("s")).toEqual(["Seattle", "Shoreline"]);
     expect(search.find("SE")).toEqual(["Seattle"]);
   });
-
-
 });
-

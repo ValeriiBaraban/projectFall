@@ -16,24 +16,7 @@ if (window.__TEST__) {
     const cityError = document.querySelector("#city-error");
     const cityField = document.querySelector("#cities");
 
-    // checking City
-    const checkingFieldName = () => {
-      if (cityField.value.length === 0) {
-        cityError.textContent = "Field required";
-        return false;
-      } else if (cityField.value.length < 3) {
-        cityError.textContent = "min 3 symbols";
-        return false;
-      } else if (!/^[A-Za-z\s\-]+$/.test(cityField.value)) {
-        cityError.textContent = "Only symbols";
-        return false;
-      }
-      else {
-        cityError.textContent = "";
-        return true;
-      }
-    };
-
+  
     //listen input field for search engine
 
     //download list of cities and writing it to session storage
