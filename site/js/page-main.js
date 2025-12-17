@@ -10,6 +10,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   //   window.location.href = 'index.html';
   //   return;
   // }
+
+  // Helper function to get current time in [HH, MM] format
+
   function getTime() {
     const date = new Date();
     return [
@@ -17,16 +20,21 @@ document.addEventListener("DOMContentLoaded", async () => {
       String(date.getMinutes()).padStart(2, "0"),
     ];
   }
+  // ---- Class responsible for geolocation and weather fetching ----
 
   class Geolocation {
     constructor(selectedCity) {
       this.city = selectedCity;
+      // API URL to get coordinates for the selected city
       this.geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${this.city}&count=1`;
+      // Base URL for the weather API
+
       this.BASEURL = "https://api.open-meteo.com/v1/forecast";
       this.daily = "&daily=";
       this.hourly = "&hourly=";
       this.minutely = "&minutely_15=";
     }
+    // Fetch coordinates (latitude, longitude) and country for the city
 
     async getCoordinates() {
       const res = await fetch(this.geoUrl);
@@ -36,6 +44,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       const longitude = data.results[0].longitude;
       return [latitude, longitude, country];
     }
+    // Fetch weather data for the selected city, enrich with country field
 
     async getWeather() {
       const [latitude, longitude, country] = await this.getCoordinates();
@@ -46,13 +55,15 @@ document.addEventListener("DOMContentLoaded", async () => {
       return data;
     }
   }
+  // ---- Normalize city name taken from sessionStorage ----
 
   const normalizeCityName = () => {
     try {
       const selectedCity = sessionStorage.getItem("selectedCity");
       if (!selectedCity) {
         throw new Error("selected sity error");
-      }
+      } // Capitalize first letter and lowercase the rest
+
       return (
         selectedCity.charAt(0).toUpperCase() +
         selectedCity.slice(1).toLowerCase()
@@ -61,17 +72,23 @@ document.addEventListener("DOMContentLoaded", async () => {
       return "";
     }
   };
+  // Create Geolocation instance for normalized city and fetch weather
 
   const newCity = new Geolocation(normalizeCityName());
   const response = newCity.getWeather().then(function (data) {
+    // Use extended class to both render current weather and save history
+
     const fetchCurrentWheater = new localStorageForHistory(
       data,
       normalizeCityName()
     );
-
+    // Render all current weather info to the page
     fetchCurrentWheater.fetchAll();
+    // Save current weather to localStorage history
+
     fetchCurrentWheater.addLocalStorage();
   });
+  // ---- Class to represent and render current weather card ----
 
   class CurrentWheater {
     constructor(response, cityName) {
@@ -82,12 +99,15 @@ document.addEventListener("DOMContentLoaded", async () => {
       this.lastUpdated = getTime();
       this.humidity = response.current.relative_humidity_2m;
     }
+    // Main container element for current weather card
 
     selector = document.querySelector("#current-wheater-container");
+    // Private method: convert Celsius to Fahrenheit with 1 decimal
 
     #CToF(celsium) {
       return ((celsium * 9) / 5 + 32).toFixed(1);
     }
+    // Create and append "Last updated" time element
 
     addTime() {
       const lastUpdated = document.createElement("h4");
@@ -98,6 +118,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       return lastUpdated;
     }
+    // Create and append temperature elements in °C and °F
 
     addTemp() {
       const temp_c = document.createElement("p");
@@ -111,6 +132,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       return [temp_c, temp_f];
     }
+    // Create and append location elements: country and city title
 
     addLocation() {
       const country = document.createElement("h2");
@@ -128,6 +150,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       return [country, city];
     }
+    // Create and append additional condition elements (e.g., humidity)
 
     addConditions() {
       const humidity = document.createElement("p");
@@ -137,6 +160,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       return humidity;
     }
+    // Clear container and render all weather-related elements
 
     fetchAll() {
       this.selector.innerHTML = "";
@@ -146,11 +170,13 @@ document.addEventListener("DOMContentLoaded", async () => {
       this.addConditions();
     }
   }
+  // ---- Extended class: renders weather and stores history in localStorage ----
 
   class localStorageForHistory extends CurrentWheater {
     constructor(response, cityName) {
       super(response, cityName);
     }
+    // Save current weather snapshot into "WheaterHistory" in localStorage
 
     addLocalStorage() {
       const historicalTime =
@@ -167,6 +193,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       return historicalTime;
     }
   }
+  // ---- Loading card class: manages loading spinner while fetching data ----
 
   class loadingCard {
     constructor() {
@@ -194,11 +221,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       return loadingScreen;
     }
+    // Show loading screen and hide weather card
 
     show() {
       this.card.classList.remove("hidden");
       this.selector.classList.add("hidden");
     }
+    // Hide loading screen and show weather card
 
     hide() {
       this.card.classList.add("hidden");
@@ -208,7 +237,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const loader = new loadingCard();
 
-  //timer for loading wheater
+  //timer for loading wheater    // ---- Timer for showing loading animation ----
+
   const switchLoading = () => {
     loader.show();
 
