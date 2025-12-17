@@ -24,7 +24,7 @@ if (window.__TEST__) {
       } else if (cityField.value.length < 3) {
         cityError.textContent = "min 3 symbols";
         return false;
-      } else if (!/^[A-Za-z\s\-]+$/.test(value)) {
+      } else if (!/^[A-Za-z\s\-]+$/.test(cityField.value)) {
         cityError.textContent = "Only symbols";
         return false;
       }
