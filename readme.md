@@ -4,15 +4,18 @@ A client-side web application that provides weather information with city autoco
 
 ---
 
-🌐 Live Demo  
+## 🌐 Live Application  
 https://projectfall.click
+
+## 🧪 Test Runner (Jasmine)  
+https://projectfall.click/site/SpecRunner.html
 
 ---
 
 ## 🧩 What the App Does
 
 - Allows users to search for cities using an autocomplete interface
-- Fetches weather data from an external API
+- Retrieves weather data from external APIs
 - Displays dynamic, data-driven weather results
 - Stores recent searches and UI state using `localStorage` and `sessionStorage`
 - Supports client-side filtering and interactive UI updates without page reloads
@@ -30,8 +33,6 @@ https://projectfall.click
 - Jasmine (unit testing)
 
 ---
-🧪 Test Runner (Jasmine)  
-https://projectfall.click/site/SpecRunner.html
 
 ## 📊 Data Handling & Validation
 
@@ -40,7 +41,7 @@ https://projectfall.click/site/SpecRunner.html
 - API responses are validated and transformed before rendering
 - Basic error handling is implemented for invalid input and failed requests
 - External API responses are normalized and combined before being rendered in the UI
-
+- Client-side data processing supports fast iteration and exploratory user interaction
 
 ---
 
@@ -54,11 +55,12 @@ Opening files directly using `file://` will not work due to browser security res
 - Local web server
 
 ### Option: VS Code Live Server
+
 1. Open the project folder in **VS Code**
 2. Install the **Live Server** extension
 3. Right-click `index.html`
 4. Select **“Open with Live Server”**
-4. Navigate to the provided local URL
+5. Navigate to the provided local URL
 
 ---
 
@@ -84,4 +86,3 @@ Opening files directly using `file://` will not work due to browser security res
 - Add more advanced input validation and accessibility enhancements
 - Improve performance for large datasets
 - Add persistent user preferences and saved locations
-
