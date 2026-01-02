@@ -1,53 +1,82 @@
 # Weather App
 
-A simple weather application with city autocomplete powered by JavaScript, ES modules, and a local JSON dataset.
+A client-side web application that provides weather information with city autocomplete, search, and filtering features. Built with modern JavaScript (ES modules) and focused on data handling, usability, and maintainability.
 
 ---
-Locates:
 
+🌐 Live Demo  
 https://projectfall.click
 
-⚠️ Important Notes
+---
 
-Do not open files using file://
+## 🧩 What the App Does
 
-ES modules require a server environment
+- Allows users to search for cities using an autocomplete interface
+- Fetches weather data from an external API
+- Displays dynamic, data-driven weather results
+- Stores recent searches and UI state using `localStorage` and `sessionStorage`
+- Supports client-side filtering and interactive UI updates without page reloads
 
-City data is loaded from a local JSON file
+---
 
-CORS restrictions apply when using fetch()
+## 🛠️ Technologies Used
 
+- JavaScript (ES6+, ES modules)
+- HTML5 / CSS3
+- Fetch API, async/await
+- JSON data processing
+- localStorage / sessionStorage
+- Jasmine (unit testing)
 
-🧪 Running Tests (Jasmine)
+---
 
-Start the same local server
+## 📊 Data Handling & Validation
 
-Open http://127.0.0.1:5500/site/SpecRunner.html in the browser
+- City metadata is loaded from a local JSON dataset
+- User input is validated before triggering API requests
+- API responses are validated and transformed before rendering
+- Basic error handling is implemented for invalid input and failed requests
 
-Jasmine tests will run automatically
+---
 
 ## 🚀 Local Setup
 
 This project uses **JavaScript modules** (`type="module"`) and the **Fetch API**, so it must be run through a local web server.  
-Opening `index.html` directly with `file://` will not work.
+Opening files directly using `file://` will not work due to browser security restrictions.
 
----
-
-## ✅ Requirements
-
+### Requirements
 - Modern browser (Chrome, Edge, Firefox)
 - Local web server
 
----
-
-## ▶️ Run Locally
-
-### Option 1: VS Code Live Server (Recommended)
-
+### Option: VS Code Live Server
 1. Open the project folder in **VS Code**
-2. Install the **Live Server** extension (Ctrl+Shift+X)
+2. Install the **Live Server** extension
 3. Right-click `index.html`
 4. Select **“Open with Live Server”**
-5. The app will open automatically in your browser
+4. Navigate to the provided local URL
 
 ---
+
+## 🧪 Running Tests (Jasmine)
+
+1. Start the local server
+2. Open `http://127.0.0.1:5500/site/SpecRunner.html`
+3. Jasmine tests will run automatically in the browser
+
+---
+
+## 🔐 Important Notes
+
+- ES modules require a server environment
+- Fetch requests are subject to CORS restrictions
+- Local JSON data must be served over HTTP
+
+---
+
+## 🔮 Future Improvements
+
+- Move API logic to a lightweight server-side layer
+- Add more advanced input validation and accessibility enhancements
+- Improve performance for large datasets
+- Add persistent user preferences and saved locations
+
