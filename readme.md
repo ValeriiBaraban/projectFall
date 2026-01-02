@@ -24,11 +24,14 @@ https://projectfall.click
 - JavaScript (ES6+, ES modules)
 - HTML5 / CSS3
 - Fetch API, async/await
+- Integration of multiple external web APIs with dependent request flows
 - JSON data processing
 - localStorage / sessionStorage
 - Jasmine (unit testing)
 
 ---
+🧪 Test Runner (Jasmine)  
+https://projectfall.click/site/SpecRunner.html
 
 ## 📊 Data Handling & Validation
 
@@ -36,6 +39,8 @@ https://projectfall.click
 - User input is validated before triggering API requests
 - API responses are validated and transformed before rendering
 - Basic error handling is implemented for invalid input and failed requests
+- External API responses are normalized and combined before being rendered in the UI
+
 
 ---
 
@@ -80,13 +85,3 @@ Opening files directly using `file://` will not work due to browser security res
 - Improve performance for large datasets
 - Add persistent user preferences and saved locations
 
-## 📸 Screenshots
-
-### Main Interface
-![Main UI](screenshots/01-main-ui.png)
-
-### Search and Filtering
-![Search](screenshots/02-search-filter.png)
-
-### API Data Results
-![Results](screenshots/03-api-results.png)
