@@ -80,3 +80,13 @@ Opening files directly using `file://` will not work due to browser security res
 - Improve performance for large datasets
 - Add persistent user preferences and saved locations
 
+## 📸 Screenshots
+
+### Main Interface
+![Main UI](screenshots/01-main-ui.png)
+
+### Search and Filtering
+![Search](screenshots/02-search-filter.png)
+
+### API Data Results
+![Results](screenshots/03-api-results.png)
