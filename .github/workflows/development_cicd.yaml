@@ -18,8 +18,9 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          role-to-assume: ${{ secrets.AWS_ROLE_TO_ASSUME }}
+         # aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+         # aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
       - name: Sync site/ to S3 to \site/
@@ -27,7 +28,22 @@ jobs:
           aws s3 sync site s3://projectfall.click/site --delete
 
       - name: Invalidate CloudFront cache
+        env:
+          AWS_DEFAULT_REGION: us-east-1
+        # run: |
+        #    aws cloudfront create-invalidation \
+        #     --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+        #     --paths "/*"
         run: |
-           aws cloudfront create-invalidation \
-            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
-            --paths "/*"
+          DIST_ID=$(aws ssm get-parameter --name "/projectfall/cloudfront_id" --query "Parameter.Value" --output text)
+          
+          echo "Distribution ID: $DIST_ID"
+          
+          # 2. Invalidate CloudFront cache with the retrieved ID
+          aws cloudfront create-invalidation \
+            --distribution-id $DIST_ID \
+            --paths "/*"   
+
+      
+      
+        
