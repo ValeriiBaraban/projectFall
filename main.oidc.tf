@@ -30,29 +30,29 @@ data "aws_iam_policy_document" "github_assume_role_policy" {
       values   = ["sts.amazonaws.com"]
     }
 
-    # condition {
-    #   test     = "StringLike"
-    #   variable = "token.actions.githubusercontent.com:sub"
-    #   values   = ["repo:${var.git_user_name}/${var.git_repo_name}:*"] 
-    # }
+    condition {
+      test     = "StringLike"
+      variable = "token.actions.githubusercontent.com:sub"
+      values   = ["repo:${var.git_user_name}/${var.git_repo_name}:*"] 
+    }
   }
 }
 
-# resource "aws_iam_role" "github_actions_role" {
-#   name               = "github-actions-summer-deployer"
-#   assume_role_policy = data.aws_iam_policy_document.github_assume_role_policy.json
-# }
+resource "aws_iam_role" "github_actions_role" {
+  name               = "github-actions-fall-deployer"
+  assume_role_policy = data.aws_iam_policy_document.github_assume_role_policy.json
+}
 
-# resource "aws_iam_policy" "github_deploy_policy" {
-#   name        = "github-actions-deploy-policy"
-#   description = "Permissions for GitHub Actions to deploy Frontend"
-#   policy      = data.aws_iam_policy_document.github_deploy_permissions.json
-# }
+resource "aws_iam_policy" "github_deploy_policy" {
+  name        = "github-actions-deploy-policy-fall"
+  description = "Permissions for GitHub Actions to deploy Frontend"
+  policy      = data.aws_iam_policy_document.github_deploy_permissions.json
+}
 
-# resource "aws_iam_role_policy_attachment" "github_attach" {
-#   role       = aws_iam_role.github_actions_role.name
-#   policy_arn = aws_iam_policy.github_deploy_policy.arn
-# }
+resource "aws_iam_role_policy_attachment" "github_attach" {
+  role       = aws_iam_role.github_actions_role.name
+  policy_arn = aws_iam_policy.github_deploy_policy.arn
+}
 
 resource "aws_ssm_parameter" "cloudfront_distribution_id" {
   name        = "/projectfall/cloudfront_id"
